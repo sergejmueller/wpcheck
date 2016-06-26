@@ -27,7 +27,7 @@ Multiple URLs can be separated by spaces.
 Options
 -----
 
-`--silent` → Disable success and notice messages. Warning errors only.
+`--silent` → Disable success and notice messages. Warning errors only.<br>
 `--rules-dir` → Load additional rules from this directory (absolute path)
 
 
