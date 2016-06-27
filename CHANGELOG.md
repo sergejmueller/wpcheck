@@ -1,3 +1,11 @@
+### v0.1.2 (2016-06-27)
+
+* Readme: Reorganize text blocks
+* Readme: Add badges ;)
+* ESLint: Embed path to `.eslintrc`
+* Codeclimate: Set `mass_threshold` to `50`
+
+
 ### v0.1.1 (2016-06-27)
 
 * Readme: Add more example snippets

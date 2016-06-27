@@ -1,15 +1,15 @@
 engines:
   eslint:
     enabled: true
+    config:
+      config: .eslintrc
   duplication:
     enabled: true
-    exclude_paths:
-    - test/
-    - examples/
     config:
       languages:
-      - javascript
+        javascript:
+          mass_threshold: 50
 ratings:
   paths:
-  - index.js
-  - lib/**
+    index.js
+    lib/**
