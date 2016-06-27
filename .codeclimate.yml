@@ -11,5 +11,5 @@ engines:
           mass_threshold: 50
 ratings:
   paths:
-    index.js
-    lib/**
+  - index.js
+  - lib/**
