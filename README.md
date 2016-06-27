@@ -27,8 +27,8 @@ Multiple URLs can be separated by spaces.
 Options
 -----
 
-`--silent` → Disable success and notice messages. Warning errors only.<br>
-`--rules-dir` → Load additional rules from this directory (absolute path)
+`--silent` → Disable success and notice messages. Warning errors only<br>
+`--rules-dir` → Load additional rules from this directory (see below)
 
 
 Examples
@@ -36,4 +36,27 @@ Examples
 
 ```bash
 wpscan https://ma.tt
+
+wpscan https://ma.tt --silent
+
+wpscan https://ma.tt --rules-dir ~/path/to/custom/rules
+```
+
+
+Custom rules
+-----
+The argument `--rules-dir` allows loading of user-defined rules from a directory.
+
+- The directory path
+  - can be absolute or relative
+- The custom rules
+  - must be stored as `.js` files
+  - need to be structured as follows ([example](examples/rules/custom-rule.js)):
+
+```javascript
+exports.fire = function( data ) {
+
+    // Play with data
+
+}
 ```
