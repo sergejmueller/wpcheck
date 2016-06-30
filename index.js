@@ -6,7 +6,31 @@
 
 const
     app = require( './lib/app' ),
-    argv = require( 'minimist' )( process.argv.slice(2) );
+    minimist = require( 'minimist' );
+
+const argv = minimist(
+    process.argv.slice(2),
+    {
+        alias: {
+            's': 'silent',
+            'r': 'rules-dir'
+        },
+        default: {
+            'wpURL': null,
+            'siteURL': null,
+            'silent': false,
+            'rules-dir': null
+        },
+        string: [
+            'wpURL',
+            'siteURL',
+            'rules-dir'
+        ],
+        boolean: [
+            'silent'
+        ]
+    }
+);
 
 
 argv._.forEach( function( siteURL ) {

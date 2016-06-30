@@ -1,3 +1,14 @@
+### v0.2.0 (2016-06-30)
+
+* Core: Multiple mocha tests
+* Core: URI autocomplete for CLI commands (`ma.tt → http://ma.tt`)
+* Core: Extended functionality for CLI arguments handling
+* Core: Shortcuts for CLI options (`-s` → `--silent` & `-r` → `--rules-dir`)
+* Travis: Remove `node_js` versions <= 4
+* ESLint: Add `mocha: true` to `env` arguments
+* Codeclimate: Add `test` folder to `exclude_paths`
+
+
 ### v0.1.2 (2016-06-27)
 
 * Readme: Reorganize text blocks
