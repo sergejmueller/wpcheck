@@ -39,6 +39,6 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && mocha"
+    "test": "npm run lint && mocha --no-timeouts"
   }
 }

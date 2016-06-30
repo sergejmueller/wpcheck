@@ -11,8 +11,6 @@ describe( 'wpscan CLI', function() {
 
     it( 'wpscan http://ma.tt', function( done ) {
 
-        this.timeout( 20000 );
-
         exec( 'wpscan http://ma.tt' ).then( function( result ) {
 
             const data = result.stdout.trim();
@@ -33,8 +31,6 @@ describe( 'wpscan CLI', function() {
 
 
     it( 'wpscan http://ma.tt --rules-dir ../examples/rules', function( done ) {
-
-        this.timeout( 20000 );
 
         exec( 'wpscan http://ma.tt --rules-dir ../examples/rules' ).then( function( result ) {
 
@@ -58,8 +54,6 @@ describe( 'wpscan CLI', function() {
 
     it( 'wpscan http://ma.tt -r ../examples/rules', function( done ) {
 
-        this.timeout( 20000 );
-
         exec( 'wpscan http://ma.tt -r ../examples/rules' ).then( function( result ) {
 
             const data = result.stdout.trim();
@@ -82,8 +76,6 @@ describe( 'wpscan CLI', function() {
 
     it( 'wpscan http://ma.tt --silent', function( done ) {
 
-        this.timeout( 20000 );
-
         exec( 'wpscan http://ma.tt --silent' ).then( function( result ) {
 
             const data = result.stdout.trim();
@@ -98,8 +90,6 @@ describe( 'wpscan CLI', function() {
 
 
     it( 'wpscan http://ma.tt https://wpengine.com --silent', function( done ) {
-
-        this.timeout( 20000 );
 
         exec( 'wpscan http://ma.tt https://wpengine.com --silent' ).then( function( result ) {
 
@@ -116,8 +106,6 @@ describe( 'wpscan CLI', function() {
 
     it( 'wpscan ma.tt -s', function( done ) {
 
-        this.timeout( 20000 );
-
         exec( 'wpscan ma.tt -s' ).then( function( result ) {
 
             const data = result.stdout.trim();
@@ -132,8 +120,6 @@ describe( 'wpscan CLI', function() {
 
 
     it( 'wpscan ma.tt wpengine.com -s', function( done ) {
-
-        this.timeout( 20000 );
 
         exec( 'wpscan ma.tt wpengine.com -s' ).then( function( result ) {
 
