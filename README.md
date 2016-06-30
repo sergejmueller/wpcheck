@@ -34,8 +34,8 @@ Multiple URLs can be separated by spaces.
 Options
 -----
 
-`--silent` → Disable success and info messages. Warnings only.<br>
-`--rules-dir` → Load additional rules from any directory (see below).
+`--silent` OR `-s` → Disable success and info messages. Warnings only.<br>
+`--rules-dir` OR `-r` → Load additional rules from any directory (see below).
 
 
 Custom rules

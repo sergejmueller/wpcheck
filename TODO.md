@@ -13,3 +13,8 @@
 - [ ] Check: Theme version
 - [ ] Check: Plugins versions
 - [ ] Check: Vulnerabilities via https://wpvulndb.com
+
+
+### Closed todos
+
+- [x] Mocha tests

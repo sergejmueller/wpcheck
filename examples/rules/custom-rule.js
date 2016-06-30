@@ -15,6 +15,6 @@ exports.fire = function( data ) {
 
     message.success( 'Custom wpscan rule fired!', data.silent );
 
-    console.log( data );
+    // console.log( data );
 
 }

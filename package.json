@@ -1,6 +1,6 @@
 {
   "name": "wpscan",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Vulnerability scanner for WordPress",
   "main": "index.js",
   "bin": {
@@ -32,10 +32,13 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "eslint": "^2.13.1"
+    "eslint": "^2.13.1",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.1",
+    "child-process-promise": "^2.0.3"
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint"
+    "test": "npm run lint && mocha"
   }
 }
