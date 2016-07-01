@@ -1,3 +1,9 @@
+### v0.2.1 (2016-07-01)
+
+* Core: Add `normalizeURL` function with `validUrl` check
+* Readme: Text changes
+
+
 ### v0.2.0 (2016-06-30)
 
 * Core: Multiple mocha tests
