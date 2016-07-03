@@ -1,3 +1,13 @@
+### v0.2.2 (2016-07-03)
+
+* ESLint: Bump to v3.0.0
+* Core: Rename app lib `message` to `log`
+* Core: Rename `message.success` to `log.ok`
+* Core: Remove function `message.die` and replace with `log.warn`
+* Core: Add new mocha tests
+* Core: Add comments to all mocha tests
+
+
 ### v0.2.1 (2016-07-01)
 
 * Core: Add `normalizeURL` function with `validUrl` check
