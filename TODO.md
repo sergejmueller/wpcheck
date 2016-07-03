@@ -3,6 +3,7 @@
 - [ ] Option: `wp-content`
 - [ ] Option: `include-rules-file`
 - [ ] Option: User-Agent
+- [ ] Option: Read site URLs from a file
 - [ ] Check: Default admin user
 - [ ] Check: Available users
 - [ ] Check: WordPress DB default prefix
