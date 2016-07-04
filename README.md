@@ -3,7 +3,7 @@ wpscan
 
 `wpscan` [Node.js module](https://www.npmjs.com/package/wpscan) allows you to quickly scan a WordPress site looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
 
-Beginner friendly. Easy to install. Supports custom rules. **Work in progress**, see [the coming features](TODO.md).
+Beginner friendly. Easy to install. Supports custom rules. **Work in progress**, see [todos](TODO.md) and [changelog](CHANGELOG.md).
 
 [![Dependency Status](https://david-dm.org/sergejmueller/wpscan.svg)](https://david-dm.org/sergejmueller/wpscan)
 [![Code Climate](https://codeclimate.com/github/sergejmueller/wpscan/badges/gpa.svg)](https://codeclimate.com/github/sergejmueller/wpscan)
@@ -35,7 +35,8 @@ Options
 -----
 
 `--silent` or `-s` → Disable success and info messages. Warnings only.<br>
-`--rules-dir` or `-r` → Load additional rules from any directory (see below).
+`--rules-dir` or `-r` → Load additional rules from any directory (see below).<br>
+`--user-agent` or `-u` → Set a custom `User-Agent` string different to `-` (default).
 
 
 Quick examples
@@ -45,18 +46,19 @@ Quick examples
 wpscan https://ma.tt
 wpscan https://ma.tt --silent
 wpscan https://ma.tt --rules-dir ~/path/to/custom/rules
+wpscan https://ma.tt --user-agent wpscan
 ```
 
 
 Custom rules
 -----
-The argument `--rules-dir` allows loading of user-defined rules from a directory.
+The argument `--rules-dir` allows loading of user-defined rules from a custom directory.
 
 - The directory path
   - can be absolute or relative
 - The custom rules
   - must be stored as `.js` files
-  - need to be structured as follows ([example](examples/rules/custom-rule.js)):
+  - need to be structured as follows:
 
 ```javascript
 'use strict';
@@ -65,3 +67,7 @@ exports.fire = function( data ) {
     // Play with data
 }
 ```
+
+Get inspired:
+- [example custom rules](examples/rules)
+- [wpscan default rules](lib/rules)
