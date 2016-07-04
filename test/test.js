@@ -1,9 +1,10 @@
 'use strict';
 
 
-const
-    expect = require( 'chai' ).expect,
-    exec = require( 'child-process-promise' ).exec;
+require( 'must/register' );
+
+
+const exec = require( 'child-process-promise' ).exec;
 
 
 describe( 'wpscan CLI', function() {
@@ -19,7 +20,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stderr.trim();
 
-            expect( data ).to.have.string( 'is not a valid URL' );
+            data.must.have.string( 'is not a valid URL' );
 
             done();
 
@@ -38,7 +39,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stderr.trim();
 
-            expect( data ).to.have.string( 'Can not resolve' );
+            data.must.have.string( 'Can not resolve' );
 
             done();
 
@@ -57,7 +58,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stderr.trim();
 
-            expect( data ).to.have.string( 'is not using WordPress' );
+            data.must.have.string( 'is not using WordPress' );
 
             done();
 
@@ -76,13 +77,15 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            expect( data ).to.have.string( 'New site URL: http://ma.tt → https://ma.tt' );
-            expect( data ).to.have.string( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
-            expect( data ).to.have.string( 'https://ma.tt/blog/wp-config.php is public but safe' );
-            expect( data ).to.have.string( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
-            expect( data ).to.have.string( 'https://ma.tt/blog/wp-content/debug.log is not public' );
-            expect( data ).to.have.string( 'https://ma.tt/.htpasswd is not public' );
-            expect( data ).to.have.string( 'https://ma.tt/.htaccess is not public' );
+            data.must.have.string( 'New site URL: http://ma.tt → https://ma.tt' );
+            data.must.have.string( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
+            data.must.have.string( 'https://ma.tt/blog/wp-config.php is public but safe' );
+            data.must.have.string( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
+            data.must.have.string( 'https://ma.tt/blog/wp-content/debug.log is not public' );
+            data.must.have.string( 'https://ma.tt/.htpasswd is not public' );
+            data.must.have.string( 'https://ma.tt/.htaccess is not public' );
+            data.must.have.string( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
+            data.must.have.string( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
 
             done();
 
@@ -101,7 +104,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            expect( data ).to.have.string( 'Custom wpscan rule fired!' );
+            data.must.have.string( 'Custom wpscan rule fired!' );
 
             done();
 
@@ -120,7 +123,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stderr.trim();
 
-            expect( data ).to.have.string( 'no such file or directory' );
+            data.must.have.string( 'no such file or directory' );
 
             done();
 
@@ -139,7 +142,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            expect( data ).to.be.empty;
+            data.must.be.empty;
 
             done();
 
@@ -158,7 +161,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            expect( data ).to.be.empty;
+            data.must.be.empty;
 
             done();
 
@@ -177,7 +180,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            expect( data ).to.be.empty;
+            data.must.be.empty;
 
             done();
 
@@ -196,7 +199,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            expect( data ).to.be.empty;
+            data.must.be.empty;
 
             done();
 

@@ -13,7 +13,7 @@ const log = require( 'log' );
 
 exports.fire = function( data ) {
 
-    log.ok( 'Custom wpscan rule fired!', data.silent );
+    log.ok( 'Custom wpscan rule fired!', data.silentMode );
 
     // console.log( data );
 

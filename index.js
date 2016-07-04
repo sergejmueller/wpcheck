@@ -13,18 +13,17 @@ const argv = minimist(
     {
         alias: {
             's': 'silent',
-            'r': 'rules-dir'
+            'r': 'rules-dir',
+            'u': 'user-agent'
         },
         default: {
-            'wpURL': null,
-            'siteURL': null,
             'silent': false,
-            'rules-dir': null
+            'rules-dir': null,
+            'user-agent': '-'
         },
         string: [
-            'wpURL',
-            'siteURL',
-            'rules-dir'
+            'rules-dir',
+            'user-agent'
         ],
         boolean: [
             'silent'
@@ -36,10 +35,11 @@ const argv = minimist(
 argv._.forEach( function( siteURL ) {
 
     app.fire( {
-        'silent': argv['silent'],
-        'rulesDir': argv['rules-dir'],
         'wpURL': siteURL,
-        'siteURL': siteURL
+        'siteURL': siteURL,
+        'rulesDir': argv['rules-dir'],
+        'userAgent': argv['user-agent'],
+        'silentMode': argv['silent']
     } );
 
 } );
