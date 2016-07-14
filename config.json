@@ -1,0 +1,28 @@
+{
+    "minimist": {
+        "alias": {
+            "s": "silent",
+            "r": "rules-dir",
+            "b": "bulk-file",
+            "u": "user-agent"
+        },
+        "default": {
+            "silent": false,
+            "rules-dir": null,
+            "bulk-file": null,
+            "user-agent": "wpscan"
+        },
+        "string": [
+            "rules-dir",
+            "bulk-file",
+            "user-agent"
+        ],
+        "boolean": [
+            "silent"
+        ]
+    },
+    "app": {
+        "testFile": "/wp-includes/js/jquery/jquery.js",
+        "rulesDir": "./lib/rules"
+    }
+}
