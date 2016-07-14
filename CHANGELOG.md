@@ -1,3 +1,18 @@
+### v0.4.0 (2016-07-14)
+
+##### New
+* Core: Export config data into `config.json`
+* Core: Refactor `index.js`
+* Core: Add helper function `makeAbsolute`
+* Core: Set the default User-Agent to `wpscan`
+* Core: Split error and status code warnings
+* Option: `--bulk-file` reads sources/URLs from a file
+* Test: Bulk file tests
+* Rule: Availability check for `wp-config-sample.php`
+* Examples: Add bulk file `sources.txt`
+* Readme: Text changes
+
+
 ### v0.3.0 (2016-07-04)
 
 ##### New

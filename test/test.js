@@ -81,6 +81,7 @@ describe( 'wpscan CLI', function() {
             data.must.have.string( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
             data.must.have.string( 'https://ma.tt/blog/wp-config.php is public but safe' );
             data.must.have.string( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
+            data.must.have.string( 'https://ma.tt/wp-config-sample.php is not public' );
             data.must.have.string( 'https://ma.tt/blog/wp-content/debug.log is not public' );
             data.must.have.string( 'https://ma.tt/.htpasswd is not public' );
             data.must.have.string( 'https://ma.tt/.htaccess is not public' );
@@ -98,9 +99,9 @@ describe( 'wpscan CLI', function() {
      * wpscan a single WordPress URL with custom rules
      */
 
-    it( 'wpscan http://ma.tt --rules-dir ../examples/rules', function( done ) {
+    it( 'wpscan http://ma.tt --rules-dir ./examples/rules', function( done ) {
 
-        exec( 'wpscan http://ma.tt --rules-dir ../examples/rules' ).then( function( result ) {
+        exec( 'wpscan http://ma.tt --rules-dir ./examples/rules' ).then( function( result ) {
 
             const data = result.stdout.trim();
 
@@ -207,5 +208,42 @@ describe( 'wpscan CLI', function() {
 
     } );
 
+
+    /**
+     * wpscan multiple WordPress URLs readed from a bulk file in silent mode
+     */
+
+    it( 'wpscan -b ./examples/sources.txt -s', function( done ) {
+
+        exec( 'wpscan -b ./examples/sources.txt -s' ).then( function( result ) {
+
+            const data = result.stdout.trim();
+
+            data.must.be.empty;
+
+            done();
+
+        } );
+
+    } );
+
+
+    /**
+     * wpscan additional WordPress URLs readed from a bulk file in silent mode
+     */
+
+    it( 'wpscan ma.tt -b ./examples/sources.txt -s', function( done ) {
+
+        exec( 'wpscan ma.tt -b ./examples/sources.txt -s' ).then( function( result ) {
+
+            const data = result.stdout.trim();
+
+            data.must.be.empty;
+
+            done();
+
+        } );
+
+    } );
 
 } );
