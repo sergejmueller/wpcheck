@@ -79,12 +79,17 @@ describe( 'wpscan CLI', function() {
 
             data.must.have.string( 'New site URL: http://ma.tt → https://ma.tt' );
             data.must.have.string( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
-            data.must.have.string( 'https://ma.tt/blog/wp-config.php is public but safe' );
-            data.must.have.string( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
-            data.must.have.string( 'https://ma.tt/wp-config-sample.php is not public' );
-            data.must.have.string( 'https://ma.tt/blog/wp-content/debug.log is not public' );
+            data.must.have.string( 'https://ma.tt/.ssh is not public' );
+            data.must.have.string( 'https://ma.tt/.gitconfig is not public' );
+            data.must.have.string( 'https://ma.tt/.npmrc is not public' );
             data.must.have.string( 'https://ma.tt/.htpasswd is not public' );
             data.must.have.string( 'https://ma.tt/.htaccess is not public' );
+            data.must.have.string( 'https://ma.tt/config.gypi is not public' );
+            data.must.have.string( 'https://ma.tt/config.json is not public' );
+            data.must.have.string( 'https://ma.tt/blog/wp-config.php is public but safe' );
+            data.must.have.string( 'https://ma.tt/blog/wp-config-sample.php is not public' );
+            data.must.have.string( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
+            data.must.have.string( 'https://ma.tt/blog/wp-content/debug.log is not public' );
             data.must.have.string( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
             data.must.have.string( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
 
