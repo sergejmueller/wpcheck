@@ -33,11 +33,12 @@ Multiple URLs can be separated by spaces.
 
 Options
 -----
-
-`--silent` or `-s` → Disable success and info messages. Warnings only.<br>
-`--rules-dir` or `-r` → Load additional rules from any directory (see below).<br>
-`--bulk-file` or `-b` → Read additional WordPress site URLs from a text file (see below).<br>
-`--user-agent` or `-u` → Set a custom `User-Agent` string different to `wpscan` (default).
+Option | Shortcut | Description
+------ | -------- | -----------
+`--silent` | `-s` | Disables success and info messages. Displays warnings only.
+`--rules-dir` | `-r` | Loads additional rules from any directory (see below).
+`--bulk-file` | `-b` | Reads additional WordPress site URLs from a text file (see below).
+`--user-agent` | `-u` | Sets a custom `User-Agent` string. Default is `wpscan`.
 
 
 Quick examples
@@ -54,23 +55,24 @@ wpscan https://ma.tt --user-agent "Netscape Gold"
 
 Custom rules
 -----
-The argument `--rules-dir` allows loading of user-defined rules from a custom directory.
+The option `--rules-dir` allows loading of user-defined rules from a custom directory.
 
 - The directory path
-  - can be absolute or relative to `wpscan` folder
+  - can be absolute or relative to the `wpscan` folder
 - The custom rules
   - must be stored as `.js` files
   - need to be structured as follows:
 
 ```javascript
-'use strict';
-
 exports.fire = function( data ) {
   // Play with data
 }
 ```
 
-Get inspired:
+`wpscan` will run every custom rule file. The file naming does not matter. Feel free to create your own rules, enjoy!
+
+Get inspired
+------
 - [example custom rules](examples/rules)
 - [wpscan default rules](lib/rules)
 
@@ -82,3 +84,7 @@ Multiple WordPress site URLs can be imported from a single file. This is a simpl
 ```bash
 wpscan -b ~/path/to/sources.txt
 ```
+
+
+Use, don't abuse!
+-----

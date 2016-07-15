@@ -1,15 +1,25 @@
+### v0.4.1 (2016-07-15)
+
+##### Changes
+* Rule: Sensitive dotfiles availability check
+* Core: Remove `prepend` helper function
+* Readme: Text changes
+
+
 ### v0.4.0 (2016-07-14)
 
 ##### New
-* Core: Export config data into `config.json`
-* Core: Refactor `index.js`
-* Core: Add helper function `makeAbsolute`
-* Core: Set the default User-Agent to `wpscan`
-* Core: Split error and status code warnings
 * Option: `--bulk-file` reads sources/URLs from a file
+* Core: Add helper function `makeAbsolute`
 * Test: Bulk file tests
 * Rule: Availability check for `wp-config-sample.php`
 * Examples: Add bulk file `sources.txt`
+
+##### Changes
+* Core: Refactor `index.js`
+* Core: Export config data into `config.json`
+* Core: Set the default User-Agent to `wpscan`
+* Core: Split error and status code warnings
 * Readme: Text changes
 
 
