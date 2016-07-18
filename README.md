@@ -15,7 +15,7 @@ Install
 -----
 
 ```
-npm install --global wpscan
+[sudo] npm install --global wpscan
 ```
 
 
@@ -35,10 +35,11 @@ Options
 -----
 Option | Shortcut | Description
 ------ | -------- | -----------
+`--help` | `-h` | Outputs supplied help text.
 `--silent` | `-s` | Disables success and info messages. Displays warnings only.
 `--rules-dir` | `-r` | Loads additional rules from any directory (see below).
 `--bulk-file` | `-b` | Reads additional WordPress site URLs from a text file (see below).
-`--user-agent` | `-u` | Sets a custom `User-Agent` string. Default is `wpscan`.
+`--user-agent` | `-u` | Defines a custom `User-Agent` string. Default is `wpscan`.
 
 
 Quick examples
@@ -51,6 +52,28 @@ wpscan https://ma.tt --rules-dir ~/path/to/custom/rules
 wpscan https://ma.tt --bulk-file ~/path/to/sources.txt
 wpscan https://ma.tt --user-agent "Netscape Gold"
 ```
+
+
+Default rules
+-----
+`wpscan` has a few rules that are enabled by default. You can expand the tool functionality by building their own rules (see below).
+
+1. Check sensitive WordPress/Apache/Dot files for their availability
+  - `/wp-config.php`
+  - `/wp-admin/maint/repair.php`
+  - `/.htaccess`
+  - `/.htpasswd`
+  - `/.ssh`
+  - `/.npmrc`
+  - `/.gitconfig`
+  - `/config.json`
+  - `/config.gypi`
+  - `/wp-config-sample.php`
+  - `/wp-content/debug.log`
+
+2. Scan WordPress login page for mistakes
+  - Basic access `authentication`
+  - `HTTPS` protocol usage
 
 
 Custom rules
@@ -71,9 +94,8 @@ exports.fire = function( data ) {
 
 `wpscan` will run every custom rule file. The file naming does not matter. Feel free to create your own rules, enjoy!
 
-Get inspired
-------
-- [example custom rules](examples/rules)
+**Get inspired**
+- [example custom rules](example/rules)
 - [wpscan default rules](lib/rules)
 
 

@@ -4,7 +4,7 @@
 'use strict';
 
 
-require( './lib/app' ).init(
+require( './lib/app' ).wpscan(
     require( 'minimist' )(
         process.argv.slice( 2 ),
         require( './config.json' ).minimist

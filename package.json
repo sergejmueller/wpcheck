@@ -1,11 +1,16 @@
 {
   "name": "wpscan",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Vulnerability scanner for WordPress",
   "main": "index.js",
   "bin": {
     "wpscan": "./index.js"
   },
+  "files": [
+    "lib",
+    "index.js",
+    "config.json"
+  ],
   "keywords": [
     "wordpress",
     "security",
@@ -18,10 +23,7 @@
     "url": "https://sergejmueller.github.io"
   },
   "homepage": "https://github.com/sergejmueller/wpscan",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sergejmueller/wpscan.git"
-  },
+  "repository": "sergejmueller/wpscan",
   "license": "MIT",
   "dependencies": {
     "app-module-path": "^1.1.0",
@@ -41,5 +43,8 @@
   "scripts": {
     "lint": "eslint .",
     "test": "npm run lint && mocha --no-timeouts"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }

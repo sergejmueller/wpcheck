@@ -1,12 +1,14 @@
 {
     "minimist": {
         "alias": {
+            "h": "help",
             "s": "silent",
             "r": "rules-dir",
             "b": "bulk-file",
             "u": "user-agent"
         },
         "default": {
+            "help": false,
             "silent": false,
             "rules-dir": null,
             "bulk-file": null,
@@ -18,11 +20,23 @@
             "user-agent"
         ],
         "boolean": [
+            "help",
             "silent"
         ]
     },
     "app": {
         "testFile": "/wp-includes/js/jquery/jquery.js",
         "rulesDir": "./lib/rules"
+    },
+    "help": {
+        "format": "\nUsage\n\t%s\n\nOptions\n\t%s\n",
+        "usage": "wpscan <url> [url] [options]",
+        "options": [
+            "-s, --silent      Disable success and info messages",
+            "-r, --rules-dir   Load and execute additional rules from any directory",
+            "-b, --bulk-file   Read and scan additional URLs from a text file",
+            "-u, --user-agent  Define a custom User-Agent string",
+            "-h, --help        Show this help"
+        ]
     }
 }

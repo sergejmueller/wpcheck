@@ -104,9 +104,9 @@ describe( 'wpscan CLI', function() {
      * wpscan a single WordPress URL with custom rules
      */
 
-    it( 'wpscan http://ma.tt --rules-dir ./examples/rules', function( done ) {
+    it( 'wpscan http://ma.tt --rules-dir ./example/rules', function( done ) {
 
-        exec( 'wpscan http://ma.tt --rules-dir ./examples/rules' ).then( function( result ) {
+        exec( 'wpscan http://ma.tt --rules-dir ./example/rules' ).then( function( result ) {
 
             const data = result.stdout.trim();
 
@@ -123,9 +123,9 @@ describe( 'wpscan CLI', function() {
      * wpscan a single WordPress URL with non-resolvable rules
      */
 
-    it( 'wpscan http://ma.tt -r ~/examples/rules', function( done ) {
+    it( 'wpscan http://ma.tt -r ~/example/rules', function( done ) {
 
-        exec( 'wpscan http://ma.tt -r ~/examples/rules' ).then( function( result ) {
+        exec( 'wpscan http://ma.tt -r ~/example/rules' ).then( function( result ) {
 
             const data = result.stderr.trim();
 
@@ -218,9 +218,9 @@ describe( 'wpscan CLI', function() {
      * wpscan multiple WordPress URLs readed from a bulk file in silent mode
      */
 
-    it( 'wpscan -b ./examples/sources.txt -s', function( done ) {
+    it( 'wpscan -b ./example/sources/list.txt -s', function( done ) {
 
-        exec( 'wpscan -b ./examples/sources.txt -s' ).then( function( result ) {
+        exec( 'wpscan -b ./example/sources/list.txt -s' ).then( function( result ) {
 
             const data = result.stdout.trim();
 
@@ -237,13 +237,39 @@ describe( 'wpscan CLI', function() {
      * wpscan additional WordPress URLs readed from a bulk file in silent mode
      */
 
-    it( 'wpscan ma.tt -b ./examples/sources.txt -s', function( done ) {
+    it( 'wpscan ma.tt -b ./example/sources/list.txt -s', function( done ) {
 
-        exec( 'wpscan ma.tt -b ./examples/sources.txt -s' ).then( function( result ) {
+        exec( 'wpscan ma.tt -b ./example/sources/list.txt -s' ).then( function( result ) {
 
             const data = result.stdout.trim();
 
             data.must.be.empty;
+
+            done();
+
+        } );
+
+    } );
+
+
+    /**
+     * wpscan Help
+     */
+
+    it( 'wpscan --help', function( done ) {
+
+        exec( 'wpscan --help' ).then( function( result ) {
+
+            const data = result.stdout.trim();
+
+            data.must.have.string( 'Usage' );
+            data.must.have.string( 'wpscan <url> [url] [options]' );
+            data.must.have.string( 'Options' );
+            data.must.have.string( '-s, --silent      Disable success and info messages' );
+            data.must.have.string( '-r, --rules-dir   Load and execute additional rules from any directory' );
+            data.must.have.string( '-b, --bulk-file   Read and scan additional URLs from a text file' );
+            data.must.have.string( '-u, --user-agent  Define a custom User-Agent string' );
+            data.must.have.string( '-h, --help        Show this help' );
 
             done();
 
