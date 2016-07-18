@@ -1,3 +1,21 @@
+### v0.4.2 (2016-07-18)
+
+##### New
+* Option: `--help` outputs supplied help text
+* Core: Add timeout to initial app requests
+* Test: Add `wpscan --help` case
+* Readme: Add `Default rules` part
+* Readme: Add `--help` option
+
+##### Changes
+* Core: Refactor app singletons
+* Example: Rename `./examples` → `./example`
+* Example: Rename `sources.txt` → `sources/list.txt`
+* package.json: Set `repository` → `sergejmueller/wpscan`
+* package.json: Set `engines.node` → `>=4`
+* package.json: Set `files` → `["lib","index.js","config.json"]`
+
+
 ### v0.4.1 (2016-07-15)
 
 ##### Changes
