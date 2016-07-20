@@ -37,9 +37,10 @@ Option | Shortcut | Description
 ------ | -------- | -----------
 `--help` | `-h` | Outputs supplied help text.
 `--silent` | `-s` | Disables success and info messages. Displays warnings only.
-`--rules-dir` | `-r` | Loads additional rules from any directory (see below).
+`--rules-dir` | `-r` | Loads additional rules from a directory (see below).
 `--bulk-file` | `-b` | Reads additional WordPress site URLs from a text file (see below).
 `--user-agent` | `-u` | Defines a custom `User-Agent` string. Default is `wpscan`.
+`--ignore-rule` | `-i` | Skips loading and execution of a specific rule (see below).
 
 
 Quick examples
@@ -51,14 +52,15 @@ wpscan https://ma.tt --silent
 wpscan https://ma.tt --rules-dir ~/path/to/custom/rules
 wpscan https://ma.tt --bulk-file ~/path/to/sources.txt
 wpscan https://ma.tt --user-agent "Netscape Gold"
+wpscan https://ma.tt --ignore-rule wp-login.js
 ```
 
 
 Default rules
 -----
-`wpscan` has a few rules that are enabled by default. You can expand the tool functionality by building their own rules (see below).
+`wpscan` has a few rules that are enabled by default:
 
-1. Check sensitive WordPress/Apache/Dot files for their availability
+- **Check sensitive WordPress/Apache/Dot files for their availability**
   - `/wp-config.php`
   - `/wp-admin/maint/repair.php`
   - `/.htaccess`
@@ -71,14 +73,14 @@ Default rules
   - `/wp-config-sample.php`
   - `/wp-content/debug.log`
 
-2. Scan WordPress login page for mistakes
+- **Scan WordPress login page for security mistakes**
   - Basic access `authentication`
   - `HTTPS` protocol usage
 
 
 Custom rules
 -----
-The option `--rules-dir` allows loading of user-defined rules from a custom directory.
+The power of `wpscan` is the flexibility: You can expand the tool functionality by building their own rules. The CLI option `--rules-dir` allows loading of user-defined rules from a custom directory.
 
 - The directory path
   - can be absolute or relative to the `wpscan` folder
@@ -106,6 +108,22 @@ Multiple WordPress site URLs can be imported from a single file. This is a simpl
 ```bash
 wpscan -b ~/path/to/sources.txt
 ```
+
+
+Ignore rule(s)
+-----
+`wpscan` can skip certain default and custom rules. The CLI option `--ignore-rule` takes a rule name, the rule name is the JavaScript file name of the rule without path. Multiple rule filtering is possible by a multiple use of the CLI option.
+
+```bash
+wpscan ma.tt --ignore-rule wp-login.js
+wpscan ma.tt --ignore-rule wp-login.js --ignore-rule files-exists.js
+wpscan ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js
+```
+
+
+Requirements
+-----
+* Node.js >= 4
 
 
 Use, don't abuse!

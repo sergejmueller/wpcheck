@@ -20,7 +20,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stderr.trim();
 
-            data.must.have.string( 'is not a valid URL' );
+            data.must.include( 'is not a valid URL' );
 
             done();
 
@@ -39,7 +39,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stderr.trim();
 
-            data.must.have.string( 'Can not resolve' );
+            data.must.include( 'Can not resolve' );
 
             done();
 
@@ -58,7 +58,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stderr.trim();
 
-            data.must.have.string( 'is not using WordPress' );
+            data.must.include( 'is not using WordPress' );
 
             done();
 
@@ -77,21 +77,21 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            data.must.have.string( 'New site URL: http://ma.tt → https://ma.tt' );
-            data.must.have.string( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
-            data.must.have.string( 'https://ma.tt/.ssh is not public' );
-            data.must.have.string( 'https://ma.tt/.gitconfig is not public' );
-            data.must.have.string( 'https://ma.tt/.npmrc is not public' );
-            data.must.have.string( 'https://ma.tt/.htpasswd is not public' );
-            data.must.have.string( 'https://ma.tt/.htaccess is not public' );
-            data.must.have.string( 'https://ma.tt/config.gypi is not public' );
-            data.must.have.string( 'https://ma.tt/config.json is not public' );
-            data.must.have.string( 'https://ma.tt/blog/wp-config.php is public but safe' );
-            data.must.have.string( 'https://ma.tt/blog/wp-config-sample.php is not public' );
-            data.must.have.string( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
-            data.must.have.string( 'https://ma.tt/blog/wp-content/debug.log is not public' );
-            data.must.have.string( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
-            data.must.have.string( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
+            data.must.include( 'New site URL: http://ma.tt → https://ma.tt' );
+            data.must.include( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
+            data.must.include( 'https://ma.tt/.ssh is not public' );
+            data.must.include( 'https://ma.tt/.gitconfig is not public' );
+            data.must.include( 'https://ma.tt/.npmrc is not public' );
+            data.must.include( 'https://ma.tt/.htpasswd is not public' );
+            data.must.include( 'https://ma.tt/.htaccess is not public' );
+            data.must.include( 'https://ma.tt/config.gypi is not public' );
+            data.must.include( 'https://ma.tt/config.json is not public' );
+            data.must.include( 'https://ma.tt/blog/wp-config.php is public but safe' );
+            data.must.include( 'https://ma.tt/blog/wp-config-sample.php is not public' );
+            data.must.include( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
+            data.must.include( 'https://ma.tt/blog/wp-content/debug.log is not public' );
+            data.must.include( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
+            data.must.include( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
 
             done();
 
@@ -110,7 +110,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            data.must.have.string( 'Custom wpscan rule fired!' );
+            data.must.include( 'Custom wpscan rule fired!' );
 
             done();
 
@@ -129,7 +129,7 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stderr.trim();
 
-            data.must.have.string( 'no such file or directory' );
+            data.must.include( 'no such file or directory' );
 
             done();
 
@@ -253,6 +253,79 @@ describe( 'wpscan CLI', function() {
 
 
     /**
+     * wpscan a single WordPress URL with a ignored rule
+     */
+
+    it( 'wpscan ma.tt --ignore-rule wp-login.js', function( done ) {
+
+        exec( 'wpscan ma.tt --ignore-rule wp-login.js' ).then( function( result ) {
+
+            const data = result.stdout.trim();
+
+            data.must.not.include( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
+            data.must.not.include( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
+
+            done();
+
+        } );
+
+    } );
+
+
+    /**
+     * wpscan a single WordPress URL with multiple ignored rules
+     */
+
+    it( 'wpscan ma.tt --ignore-rule wp-login.js --ignore-rule files-exists.js', function( done ) {
+
+        exec( 'wpscan ma.tt --ignore-rule wp-login.js --ignore-rule files-exists.js' ).then( function( result ) {
+
+            const data = result.stdout.trim();
+
+            data.must.include( 'New site URL: http://ma.tt → https://ma.tt' );
+            data.must.include( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
+
+            data.must.not.include( 'https://ma.tt/.ssh is not public' );
+            data.must.not.include( 'https://ma.tt/.gitconfig is not public' );
+            data.must.not.include( 'https://ma.tt/.npmrc is not public' );
+            data.must.not.include( 'https://ma.tt/.htpasswd is not public' );
+            data.must.not.include( 'https://ma.tt/.htaccess is not public' );
+            data.must.not.include( 'https://ma.tt/config.gypi is not public' );
+            data.must.not.include( 'https://ma.tt/config.json is not public' );
+            data.must.not.include( 'https://ma.tt/blog/wp-config.php is public but safe' );
+            data.must.not.include( 'https://ma.tt/blog/wp-config-sample.php is not public' );
+            data.must.not.include( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
+            data.must.not.include( 'https://ma.tt/blog/wp-content/debug.log is not public' );
+            data.must.not.include( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
+            data.must.not.include( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
+
+            done();
+
+        } );
+
+    } );
+
+
+    /**
+     * wpscan a single WordPress URL with a ignored custom rule
+     */
+
+    it( 'wpscan http://ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js', function( done ) {
+
+        exec( 'wpscan http://ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js' ).then( function( result ) {
+
+            const data = result.stdout.trim();
+
+            data.must.not.include( 'Custom wpscan rule fired!' );
+
+            done();
+
+        } );
+
+    } );
+
+
+    /**
      * wpscan Help
      */
 
@@ -262,14 +335,15 @@ describe( 'wpscan CLI', function() {
 
             const data = result.stdout.trim();
 
-            data.must.have.string( 'Usage' );
-            data.must.have.string( 'wpscan <url> [url] [options]' );
-            data.must.have.string( 'Options' );
-            data.must.have.string( '-s, --silent      Disable success and info messages' );
-            data.must.have.string( '-r, --rules-dir   Load and execute additional rules from any directory' );
-            data.must.have.string( '-b, --bulk-file   Read and scan additional URLs from a text file' );
-            data.must.have.string( '-u, --user-agent  Define a custom User-Agent string' );
-            data.must.have.string( '-h, --help        Show this help' );
+            data.must.include( 'Usage' );
+            data.must.include( 'wpscan <url> [url] [options]' );
+            data.must.include( 'Options' );
+            data.must.include( '-s, --silent       Disable success and info messages' );
+            data.must.include( '-r, --rules-dir    Load and execute additional rules from any directory' );
+            data.must.include( '-b, --bulk-file    Read and scan additional URLs from a text file' );
+            data.must.include( '-u, --user-agent   Define a custom User-Agent string' );
+            data.must.include( '-i, --ignore-rule  Skip loading and execution of a specific rule' );
+            data.must.include( '-h, --help         Show this help' );
 
             done();
 

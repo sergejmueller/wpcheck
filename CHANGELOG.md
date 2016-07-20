@@ -1,3 +1,15 @@
+### v0.5.0 (2016-07-20)
+
+##### New
+* Option: `--ignore-rule` skips execution of a specific rule
+* Core: Add Node.js version check
+* Test: Add `--ignore-rule` cases
+
+##### Changes
+* Readme: Text changes
+* Test: `must.include` instead of `must.have.string`
+
+
 ### v0.4.2 (2016-07-18)
 
 ##### New

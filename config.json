@@ -5,19 +5,22 @@
             "s": "silent",
             "r": "rules-dir",
             "b": "bulk-file",
-            "u": "user-agent"
+            "u": "user-agent",
+            "i": "ignore-rule"
         },
         "default": {
             "help": false,
             "silent": false,
             "rules-dir": null,
             "bulk-file": null,
-            "user-agent": "wpscan"
+            "user-agent": "wpscan",
+            "ignore-rule": []
         },
         "string": [
             "rules-dir",
             "bulk-file",
-            "user-agent"
+            "user-agent",
+            "ignore-rule"
         ],
         "boolean": [
             "help",
@@ -32,11 +35,12 @@
         "format": "\nUsage\n\t%s\n\nOptions\n\t%s\n",
         "usage": "wpscan <url> [url] [options]",
         "options": [
-            "-s, --silent      Disable success and info messages",
-            "-r, --rules-dir   Load and execute additional rules from any directory",
-            "-b, --bulk-file   Read and scan additional URLs from a text file",
-            "-u, --user-agent  Define a custom User-Agent string",
-            "-h, --help        Show this help"
+            "-s, --silent       Disable success and info messages",
+            "-r, --rules-dir    Load and execute additional rules from any directory",
+            "-b, --bulk-file    Read and scan additional URLs from a text file",
+            "-u, --user-agent   Define a custom User-Agent string",
+            "-i, --ignore-rule  Skip loading and execution of a specific rule",
+            "-h, --help         Show this help"
         ]
     }
 }
