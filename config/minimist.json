@@ -1,0 +1,28 @@
+{
+    "alias": {
+        "h": "help",
+        "s": "silent",
+        "r": "rules-dir",
+        "b": "bulk-file",
+        "u": "user-agent",
+        "i": "ignore-rule"
+    },
+    "default": {
+        "help": false,
+        "silent": false,
+        "rules-dir": null,
+        "bulk-file": null,
+        "user-agent": "wpscan",
+        "ignore-rule": []
+    },
+    "string": [
+        "rules-dir",
+        "bulk-file",
+        "user-agent",
+        "ignore-rule"
+    ],
+    "boolean": [
+        "help",
+        "silent"
+    ]
+}

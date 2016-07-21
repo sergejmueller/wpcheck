@@ -1,3 +1,11 @@
+### v0.5.1 (2016-07-21)
+
+##### Changes
+* Core: Split `config.json` into separate config files
+* Core: Outsource `help` functionality into `lib/help.js`
+* package.json: Update `must` and `eslint` versions
+
+
 ### v0.5.0 (2016-07-20)
 
 ##### New
