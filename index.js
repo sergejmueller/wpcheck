@@ -9,13 +9,13 @@ if ( ! require( 'semver' ).satisfies(
     require( './package.json' ).engines.node
 ) ) {
     console.error( 'Incorrect Node.js version' );
-    process.exit();
+    process.exit( 1 );
 }
 
 
 require( './lib/app' ).wpscan(
     require( 'minimist' )(
         process.argv.slice( 2 ),
-        require( './config.json' ).minimist
+        require( './config/minimist.json' )
     )
 );

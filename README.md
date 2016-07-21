@@ -80,7 +80,7 @@ Default rules
 
 Custom rules
 -----
-The power of `wpscan` is the flexibility: You can expand the tool functionality by building their own rules. The CLI option `--rules-dir` allows loading of user-defined rules from a custom directory.
+The power of `wpscan` is the flexibility: You can expand the tool functionality by building their own rules, scans and checks. The option `--rules-dir` allows loading of user-defined rules from a custom directory.
 
 - The directory path
   - can be absolute or relative to the `wpscan` folder
@@ -112,7 +112,7 @@ wpscan -b ~/path/to/sources.txt
 
 Ignore rule(s)
 -----
-`wpscan` can skip certain default and custom rules. The CLI option `--ignore-rule` takes a rule name, the rule name is the JavaScript file name of the rule without path. Multiple rule filtering is possible by a multiple use of the CLI option.
+`wpscan` can skip certain [default](lib/rules) and custom rules. The CLI option `--ignore-rule` takes a rule name, the rule name is the JavaScript file name of the rule without path. Multiple rule filtering is possible by a multiple use of the CLI option.
 
 ```bash
 wpscan ma.tt --ignore-rule wp-login.js
