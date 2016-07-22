@@ -1,3 +1,14 @@
+### v0.5.2 (2016-07-22)
+
+##### Changes
+* Core: Add new library [finder.js](lib/finder.js) with file system functions
+* Core: Refactor [app.js](lib/app.js) in association with [finder.js](lib/finder.js)
+* Core: Remove `makeAbsolute` function from [helpers.js](lib/helpers.js)
+* package.json: Add `npm outdated` to `npm test`
+* Readme: Add *Features* part
+* Readme: More text changes
+
+
 ### v0.5.1 (2016-07-21)
 
 ##### Changes

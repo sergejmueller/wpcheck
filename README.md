@@ -1,7 +1,7 @@
 wpscan
 ============
 
-`wpscan` [Node.js module](https://www.npmjs.com/package/wpscan) allows you to quickly scan a WordPress site looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
+`wpscan` [Node.js module](https://www.npmjs.com/package/wpscan) allows you to quickly scan WordPress sites looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
 
 Beginner friendly. Easy to install. Supports custom rules. **Work in progress**, see [todos](TODO.md) and [changelog](CHANGELOG.md).
 
@@ -11,12 +11,28 @@ Beginner friendly. Easy to install. Supports custom rules. **Work in progress**,
 [![Known Vulnerabilities](https://snyk.io/test/github/sergejmueller/wpscan/badge.svg)](https://snyk.io/test/github/sergejmueller/wpscan)
 
 
+Features
+-----
+- [Preinstalled rules](#default-rules) for a quick start.
+- [Custom rules](#custom-rules) increases the functionality.
+- [Selective ignoring](#ignore-rules) default and custom rules.
+- Multiple WordPress scans from a [bulk file](#bulk-scan).
+- Detection for
+  - WordPress directories (`wp-content`, ...).
+  - WordPress installed in a subdirectory.
+- Changeable User-Agent string.
+- Silent mode displays warnings only.
+- Beginner friendly, easy to install.
+- Lightweight, cross plattform framework.
+
+
 Install
 -----
-
 ```
 [sudo] npm install --global wpscan
 ```
+
+`wpscan` requires `Node.js >= 4` and [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
 
 Usage
@@ -37,10 +53,10 @@ Option | Shortcut | Description
 ------ | -------- | -----------
 `--help` | `-h` | Outputs supplied help text.
 `--silent` | `-s` | Disables success and info messages. Displays warnings only.
-`--rules-dir` | `-r` | Loads additional rules from a directory (see below).
-`--bulk-file` | `-b` | Reads additional WordPress site URLs from a text file (see below).
+`--rules-dir` | `-r` | Loads additional rules from a directory (see [Custom rules](#custom-rules)).
+`--bulk-file` | `-b` | Reads additional WordPress site URLs from a text file (see [Bulk scan](#bulk-scan)).
+`--ignore-rule` | `-i` | Skips loading and execution of a specific rule (see [Ignore rules](#ignore-rules)).
 `--user-agent` | `-u` | Defines a custom `User-Agent` string. Default is `wpscan`.
-`--ignore-rule` | `-i` | Skips loading and execution of a specific rule (see below).
 
 
 Quick examples
@@ -101,15 +117,6 @@ exports.fire = function( data ) {
 - [wpscan default rules](lib/rules)
 
 
-Bulk scan
------
-Multiple WordPress site URLs can be imported from a single file. This is a simple text file with one URL per line.
-
-```bash
-wpscan -b ~/path/to/sources.txt
-```
-
-
 Ignore rule(s)
 -----
 `wpscan` can skip certain [default](lib/rules) and custom rules. The CLI option `--ignore-rule` takes a rule name, the rule name is the JavaScript file name of the rule without path. Multiple rule filtering is possible by a multiple use of the CLI option.
@@ -118,6 +125,15 @@ Ignore rule(s)
 wpscan ma.tt --ignore-rule wp-login.js
 wpscan ma.tt --ignore-rule wp-login.js --ignore-rule files-exists.js
 wpscan ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js
+```
+
+
+Bulk scan
+-----
+Multiple WordPress site URLs can be imported from a single file. This is a simple text file with one URL per line.
+
+```bash
+wpscan -b ~/path/to/sources.txt
 ```
 
 
