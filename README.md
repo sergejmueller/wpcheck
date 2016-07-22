@@ -3,8 +3,6 @@ wpscan
 
 `wpscan` [Node.js module](https://www.npmjs.com/package/wpscan) allows you to quickly scan WordPress sites looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
 
-Beginner friendly. Easy to install. Supports custom rules. **Work in progress**, see [todos](TODO.md) and [changelog](CHANGELOG.md).
-
 [![Dependency Status](https://david-dm.org/sergejmueller/wpscan.svg)](https://david-dm.org/sergejmueller/wpscan)
 [![Code Climate](https://codeclimate.com/github/sergejmueller/wpscan/badges/gpa.svg)](https://codeclimate.com/github/sergejmueller/wpscan)
 [![Build Status](https://travis-ci.org/sergejmueller/wpscan.svg?branch=master)](https://travis-ci.org/sergejmueller/wpscan)
@@ -24,6 +22,7 @@ Features
 - Silent mode displays warnings only.
 - Beginner friendly, easy to install.
 - Lightweight, cross plattform framework.
+- **Work in progress**, see [todos](TODO.md) and [changelog](CHANGELOG.md).
 
 
 Install
