@@ -1,7 +1,8 @@
-'use strict';
 
-
-const log = require( 'log' );
+/**
+ * wpscan module custom-rule.js
+ * Example custom wpscan module
+ */
 
 
 /**
@@ -11,10 +12,10 @@ const log = require( 'log' );
  * @return  void
  */
 
-exports.fire = function( data ) {
+exports.fire = ( data ) => {
 
-    log.ok( 'Custom wpscan rule fired!', data.silentMode );
+    console.log( 'Custom wpscan rule fired!' )
 
-    // console.log( data );
+    console.log( data )
 
 }

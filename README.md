@@ -104,8 +104,8 @@ The power of `wpscan` is the flexibility: You can expand the tool functionality 
   - need to be structured as follows:
 
 ```javascript
-exports.fire = function( data ) {
-  // Play with data
+exports.fire = ( data ) => {
+  // console.log( data )
 }
 ```
 
@@ -134,11 +134,6 @@ Multiple WordPress site URLs can be imported from a single file. This is a simpl
 ```bash
 wpscan -b ~/path/to/sources.txt
 ```
-
-
-Requirements
------
-* Node.js >= 4
 
 
 Use, don't abuse!
