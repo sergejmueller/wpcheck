@@ -1,354 +1,352 @@
-'use strict';
+
+/**
+ * Required modules
+ */
+
+require( 'must/register' )
+const exec = require( 'child-process-promise' ).exec
 
 
-require( 'must/register' );
-
-
-const exec = require( 'child-process-promise' ).exec;
-
-
-describe( 'wpscan CLI', function() {
+describe( 'wpscan CLI', () => {
 
 
     /**
      * wpscan a invalid URL
      */
 
-    it( 'wpscan httpp://ma.tt', function( done ) {
+    it( 'wpscan https:/google.com', ( done ) => {
 
-        exec( 'wpscan httpp://ma.tt' ).then( function( result ) {
+        exec( 'wpscan https:/google.com' ).then( result => {
 
-            const data = result.stderr.trim();
+            const data = result.stderr.trim()
 
-            data.must.include( 'is not a valid URL' );
+            data.must.include( 'is not a valid URL' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a non-resolvable URL
      */
 
-    it( 'wpscan http://ma.ttt', function( done ) {
+    it( 'wpscan https://google.comm', ( done ) => {
 
-        exec( 'wpscan http://ma.ttt' ).then( function( result ) {
+        exec( 'wpscan https://google.comm' ).then( result => {
 
-            const data = result.stderr.trim();
+            const data = result.stderr.trim()
 
-            data.must.include( 'Can not resolve' );
+            data.must.include( 'Can not resolve' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a non-WordPress page
      */
 
-    it( 'wpscan https://www.google.de', function( done ) {
+    it( 'wpscan https://www.google.de', ( done ) => {
 
-        exec( 'wpscan https://www.google.de' ).then( function( result ) {
+        exec( 'wpscan https://www.google.de' ).then( result => {
 
-            const data = result.stderr.trim();
+            const data = result.stderr.trim()
 
-            data.must.include( 'is not using WordPress' );
+            data.must.include( 'is not using WordPress' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a single WordPress URL
      */
 
-    it( 'wpscan http://ma.tt', function( done ) {
+    it( 'wpscan testcase.ebiene.de', ( done ) => {
 
-        exec( 'wpscan http://ma.tt' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.include( 'New site URL: http://ma.tt → https://ma.tt' );
-            data.must.include( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
-            data.must.include( 'https://ma.tt/.ssh is not public' );
-            data.must.include( 'https://ma.tt/.gitconfig is not public' );
-            data.must.include( 'https://ma.tt/.npmrc is not public' );
-            data.must.include( 'https://ma.tt/.htpasswd is not public' );
-            data.must.include( 'https://ma.tt/.htaccess is not public' );
-            data.must.include( 'https://ma.tt/config.gypi is not public' );
-            data.must.include( 'https://ma.tt/config.json is not public' );
-            data.must.include( 'https://ma.tt/blog/wp-config.php is public but safe' );
-            data.must.include( 'https://ma.tt/blog/wp-config-sample.php is not public' );
-            data.must.include( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
-            data.must.include( 'https://ma.tt/blog/wp-content/debug.log is not public' );
-            data.must.include( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
-            data.must.include( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
+            data.must.include( 'New site URL: http://testcase.ebiene.de → https://testcase.ebiene.de' )
+            data.must.include( 'https://testcase.ebiene.de/.ssh is not public' )
+            data.must.include( 'https://testcase.ebiene.de/.gitconfig is not public' )
+            data.must.include( 'https://testcase.ebiene.de/.npmrc is not public' )
+            data.must.include( 'https://testcase.ebiene.de/.htpasswd is not public' )
+            data.must.include( 'https://testcase.ebiene.de/.htaccess is not public' )
+            data.must.include( 'https://testcase.ebiene.de/config.gypi is not public' )
+            data.must.include( 'https://testcase.ebiene.de/config.json is not public' )
+            data.must.include( 'https://testcase.ebiene.de/wp-config.php is not public' )
+            data.must.include( 'https://testcase.ebiene.de/wp-config-sample.php is not public' )
+            data.must.include( 'https://testcase.ebiene.de/wp-admin/maint/repair.php is not public' )
+            data.must.include( 'https://testcase.ebiene.de/wp-content/debug.log is not public' )
+            data.must.include( 'https://testcase.ebiene.de/wp-login.php use HTTPS protocol' )
+            data.must.include( 'https://testcase.ebiene.de/wp-login.php is protected by HTTP Auth' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a single WordPress URL with custom rules
      */
 
-    it( 'wpscan http://ma.tt --rules-dir ./example/rules', function( done ) {
+    it( 'wpscan testcase.ebiene.de --rules-dir ./example/rules', ( done ) => {
 
-        exec( 'wpscan http://ma.tt --rules-dir ./example/rules' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de --rules-dir ./example/rules' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.include( 'Custom wpscan rule fired!' );
+            data.must.include( 'Custom wpscan rule fired!' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a single WordPress URL with non-resolvable rules
      */
 
-    it( 'wpscan http://ma.tt -r ~/example/rules', function( done ) {
+    it( 'wpscan testcase.ebiene.de -r ~/example/rules', ( done ) => {
 
-        exec( 'wpscan http://ma.tt -r ~/example/rules' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de -r ~/example/rules' ).then( result => {
 
-            const data = result.stderr.trim();
+            const data = result.stderr.trim()
 
-            data.must.include( 'no such file or directory' );
+            data.must.include( 'no such file or directory' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a single WordPress URL in silent mode
      */
 
-    it( 'wpscan http://ma.tt --silent', function( done ) {
+    it( 'wpscan testcase.ebiene.de --silent', ( done ) => {
 
-        exec( 'wpscan http://ma.tt --silent' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de --silent' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.be.empty;
+            data.must.be.empty()
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan multiple WordPress URLs in silent mode
      */
 
-    it( 'wpscan http://ma.tt https://wpengine.com --silent', function( done ) {
+    it( 'wpscan testcase.ebiene.de https://wpengine.com --silent', ( done ) => {
 
-        exec( 'wpscan http://ma.tt https://wpengine.com --silent' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de https://wpengine.com --silent' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.be.empty;
+            data.must.be.empty()
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a single WordPress URL without protocol in silent mode
      */
 
-    it( 'wpscan ma.tt -s', function( done ) {
+    it( 'wpscan testcase.ebiene.de -s', ( done ) => {
 
-        exec( 'wpscan ma.tt -s' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de -s' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.be.empty;
+            data.must.be.empty()
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan multiple WordPress URLs without protocol in silent mode
      */
 
-    it( 'wpscan ma.tt wpengine.com -s', function( done ) {
+    it( 'wpscan testcase.ebiene.de wpengine.com -s', ( done ) => {
 
-        exec( 'wpscan ma.tt wpengine.com -s' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de wpengine.com -s' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.be.empty;
+            data.must.be.empty()
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan multiple WordPress URLs readed from a bulk file in silent mode
      */
 
-    it( 'wpscan -b ./example/sources/list.txt -s', function( done ) {
+    it( 'wpscan -b ./example/sources/list.txt -s', ( done ) => {
 
-        exec( 'wpscan -b ./example/sources/list.txt -s' ).then( function( result ) {
+        exec( 'wpscan -b ./example/sources/list.txt -s' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.be.empty;
+            data.must.be.empty()
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan additional WordPress URLs readed from a bulk file in silent mode
      */
 
-    it( 'wpscan ma.tt -b ./example/sources/list.txt -s', function( done ) {
+    it( 'wpscan testcase.ebiene.de -b ./example/sources/list.txt -s', ( done ) => {
 
-        exec( 'wpscan ma.tt -b ./example/sources/list.txt -s' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de -b ./example/sources/list.txt -s' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.be.empty;
+            data.must.be.empty()
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a single WordPress URL with a ignored rule
      */
 
-    it( 'wpscan ma.tt --ignore-rule wp-login.js', function( done ) {
+    it( 'wpscan testcase.ebiene.de --ignore-rule wp-login.js', ( done ) => {
 
-        exec( 'wpscan ma.tt --ignore-rule wp-login.js' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de --ignore-rule wp-login.js' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.not.include( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
-            data.must.not.include( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
+            data.must.not.include( 'https://testcase.ebiene.de/wp-login.php use HTTPS protocol' )
+            data.must.not.include( 'https://testcase.ebiene.de/wp-login.php is protected by HTTP Auth' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a single WordPress URL with multiple ignored rules
      */
 
-    it( 'wpscan ma.tt --ignore-rule wp-login.js --ignore-rule files-exists.js', function( done ) {
+    it( 'wpscan testcase.ebiene.de --ignore-rule wp-login.js --ignore-rule files-exists.js', ( done ) => {
 
-        exec( 'wpscan ma.tt --ignore-rule wp-login.js --ignore-rule files-exists.js' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de --ignore-rule wp-login.js --ignore-rule files-exists.js' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.include( 'New site URL: http://ma.tt → https://ma.tt' );
-            data.must.include( 'New WordPress URL: https://ma.tt → https://ma.tt/blog' );
+            data.must.include( 'New site URL: http://testcase.ebiene.de → https://testcase.ebiene.de' )
 
-            data.must.not.include( 'https://ma.tt/.ssh is not public' );
-            data.must.not.include( 'https://ma.tt/.gitconfig is not public' );
-            data.must.not.include( 'https://ma.tt/.npmrc is not public' );
-            data.must.not.include( 'https://ma.tt/.htpasswd is not public' );
-            data.must.not.include( 'https://ma.tt/.htaccess is not public' );
-            data.must.not.include( 'https://ma.tt/config.gypi is not public' );
-            data.must.not.include( 'https://ma.tt/config.json is not public' );
-            data.must.not.include( 'https://ma.tt/blog/wp-config.php is public but safe' );
-            data.must.not.include( 'https://ma.tt/blog/wp-config-sample.php is not public' );
-            data.must.not.include( 'https://ma.tt/blog/wp-admin/maint/repair.php is public but safe' );
-            data.must.not.include( 'https://ma.tt/blog/wp-content/debug.log is not public' );
-            data.must.not.include( 'https://ma.tt/blog/wp-login.php use HTTPS protocol' );
-            data.must.not.include( 'https://ma.tt/blog/wp-login.php is not protected by HTTP Auth' );
+            data.must.not.include( 'https://testcase.ebiene.de/.ssh is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/.gitconfig is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/.npmrc is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/.htpasswd is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/.htaccess is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/config.gypi is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/config.json is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/wp-config.php is public but safe' )
+            data.must.not.include( 'https://testcase.ebiene.de/wp-config-sample.php is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/wp-admin/maint/repair.php is public but safe' )
+            data.must.not.include( 'https://testcase.ebiene.de/wp-content/debug.log is not public' )
+            data.must.not.include( 'https://testcase.ebiene.de/wp-login.php use HTTPS protocol' )
+            data.must.not.include( 'https://testcase.ebiene.de/wp-login.php is not protected by HTTP Auth' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan a single WordPress URL with a ignored custom rule
      */
 
-    it( 'wpscan http://ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js', function( done ) {
+    it( 'wpscan testcase.ebiene.de --rules-dir ./example/rules --ignore-rule custom-rule.js', ( done ) => {
 
-        exec( 'wpscan http://ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js' ).then( function( result ) {
+        exec( 'wpscan testcase.ebiene.de --rules-dir ./example/rules --ignore-rule custom-rule.js' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.not.include( 'Custom wpscan rule fired!' );
+            data.must.not.include( 'Custom wpscan rule fired!' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
 
     /**
      * wpscan Help
      */
 
-    it( 'wpscan --help', function( done ) {
+    it( 'wpscan --help', ( done ) => {
 
-        exec( 'wpscan --help' ).then( function( result ) {
+        exec( 'wpscan --help' ).then( result => {
 
-            const data = result.stdout.trim();
+            const data = result.stdout.trim()
 
-            data.must.include( 'Usage' );
-            data.must.include( 'wpscan <url> [url] [options]' );
-            data.must.include( 'Options' );
-            data.must.include( '-s, --silent       Disable success and info messages' );
-            data.must.include( '-r, --rules-dir    Load and execute additional rules from any directory' );
-            data.must.include( '-b, --bulk-file    Read and scan additional URLs from a text file' );
-            data.must.include( '-u, --user-agent   Define a custom User-Agent string' );
-            data.must.include( '-i, --ignore-rule  Skip loading and execution of a specific rule' );
-            data.must.include( '-h, --help         Show this help' );
+            data.must.include( 'Usage' )
+            data.must.include( 'wpscan <url> [url] [options]' )
+            data.must.include( 'Options' )
+            data.must.include( '-s, --silent       Disable success and info messages' )
+            data.must.include( '-r, --rules-dir    Load and execute additional rules from any directory' )
+            data.must.include( '-b, --bulk-file    Read and scan additional URLs from a text file' )
+            data.must.include( '-u, --user-agent   Define a custom User-Agent string' )
+            data.must.include( '-i, --ignore-rule  Skip loading and execution of a specific rule' )
+            data.must.include( '-h, --help         Show this help' )
 
-            done();
+            done()
 
-        } );
+        } )
 
-    } );
+    } )
 
-} );
+} )

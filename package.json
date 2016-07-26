@@ -1,6 +1,6 @@
 {
   "name": "wpscan",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Vulnerability scanner for WordPress",
   "main": "index.js",
   "bin": {
@@ -26,11 +26,10 @@
   "repository": "sergejmueller/wpscan",
   "license": "MIT",
   "dependencies": {
-    "app-module-path": "^1.1.0",
     "colors": "^1.1.2",
     "minimist": "^1.2.0",
     "prepend-http": "^1.0.4",
-    "request": "^2.72.0",
+    "request": "^2.74.0",
     "rtrim": "^0.0.3",
     "semver": "^5.3.0",
     "valid-url": "^1.0.9"

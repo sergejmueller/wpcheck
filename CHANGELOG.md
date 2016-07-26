@@ -1,3 +1,15 @@
+### v0.5.3 (2016-07-26)
+
+##### Changes
+* Core: Refactor all JS files for ES6 support
+* Core: Add `url.js` as a new `wpscan` module
+* Core: Remove `app-module-path` `npm` module
+* Core: Remove `helpers.js` `wpscan` module
+* Core: Update `request` `npm` module to v2.74.0
+* Test: Use a testcase domain
+* Readme: Text changes
+
+
 ### v0.5.2 (2016-07-22)
 
 ##### Changes
