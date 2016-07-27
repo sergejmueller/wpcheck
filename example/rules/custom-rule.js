@@ -14,7 +14,7 @@
 
 exports.fire = ( data ) => {
 
-    console.log( 'Custom wpscan rule fired!' )
+    console.log( 'Custom wpscan rule is fired' )
 
     console.log( data )
 
