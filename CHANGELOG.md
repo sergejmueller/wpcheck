@@ -1,3 +1,12 @@
+### v0.5.4 (2016-07-27)
+
+##### Changes
+* Core: Refactor `file-exists.js` rule library
+* Test: Extract testcase domain into `config/test.json`
+* package.json: Add `config` to the `files` array
+* package.json: Set `preferGlobal` to `true`
+
+
 ### v0.5.3 (2016-07-26)
 
 ##### Changes

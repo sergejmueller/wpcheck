@@ -1,15 +1,16 @@
 {
   "name": "wpscan",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Vulnerability scanner for WordPress",
+  "preferGlobal": true,
   "main": "index.js",
   "bin": {
     "wpscan": "./index.js"
   },
   "files": [
     "lib",
-    "index.js",
-    "config.json"
+    "config",
+    "index.js"
   ],
   "keywords": [
     "wordpress",
