@@ -1,3 +1,14 @@
+# wpscan / CHANGELOG
+
+
+### v0.5.5 (2016-07-28)
+
+##### Changes
+* Core: Add `new Error()` to `Promise` rejects
+* Misc: Add `HOWTO.md` with WordPress security tips
+* Readme: Text changes
+
+
 ### v0.5.4 (2016-07-27)
 
 ##### Changes

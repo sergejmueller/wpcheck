@@ -1,6 +1,6 @@
 {
   "name": "wpscan",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Vulnerability scanner for WordPress",
   "preferGlobal": true,
   "main": "index.js",
