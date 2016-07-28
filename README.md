@@ -1,5 +1,4 @@
-wpscan
-============
+# wpscan / HOWTO
 
 `wpscan` [Node.js module](https://www.npmjs.com/package/wpscan) allows you to quickly scan WordPress sites looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
 
@@ -9,8 +8,8 @@ wpscan
 [![Known Vulnerabilities](https://snyk.io/test/github/sergejmueller/wpscan/badge.svg)](https://snyk.io/test/github/sergejmueller/wpscan)
 
 
-Features
------
+### Features
+
 - [Preinstalled rules](#default-rules) for a quick start.
 - [Custom rules](#custom-rules) increases the functionality.
 - [Selective ignoring](#ignore-rules) default and custom rules.
@@ -20,13 +19,14 @@ Features
   - WordPress installed in a subdirectory.
 - Changeable User-Agent string.
 - Silent mode displays warnings only.
+- Howto: WordPress security [best practices](HOWTO.md).
 - Beginner friendly, easy to install.
 - Lightweight, cross plattform framework.
 - **Work in progress**, see [todos](TODO.md) and [changelog](CHANGELOG.md).
 
 
-Install
------
+### Install
+
 ```
 [sudo] npm install --global wpscan
 ```
@@ -34,8 +34,7 @@ Install
 `wpscan` requires `Node.js >= 4` and [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
 
-Usage
------
+### Usage
 
 ```bash
 wpscan <url> [url] [options]
@@ -46,8 +45,8 @@ wpscan <url> [url] [options]
 Multiple URLs can be separated by spaces.
 
 
-Options
------
+### Options
+
 Option | Shortcut | Description
 ------ | -------- | -----------
 `--help` | `-h` | Outputs supplied help text.
@@ -58,8 +57,7 @@ Option | Shortcut | Description
 `--user-agent` | `-u` | Defines a custom `User-Agent` string. Default is `wpscan`.
 
 
-Quick examples
------
+### Quick examples
 
 ```bash
 wpscan https://ma.tt
@@ -71,11 +69,11 @@ wpscan https://ma.tt --ignore-rule wp-login.js
 ```
 
 
-Default rules
------
+### Default rules
+
 `wpscan` has a few rules that are enabled by default:
 
-- **Check sensitive WordPress/Apache/Dot files for their availability**
+- Check sensitive WordPress/Apache/Dot files for their availability
   - `/wp-config.php`
   - `/wp-admin/maint/repair.php`
   - `/.htaccess`
@@ -88,13 +86,13 @@ Default rules
   - `/wp-config-sample.php`
   - `/wp-content/debug.log`
 
-- **Scan WordPress login page for security mistakes**
-  - Basic access `authentication`
-  - `HTTPS` protocol usage
+- Scan WordPress login page for security mistakes
+  - Basic access authentication
+  - HTTPS protocol usage
 
 
-Custom rules
------
+### Custom rules
+
 The power of `wpscan` is the flexibility: You can expand the tool functionality by building their own rules, scans and checks. The option `--rules-dir` allows loading of user-defined rules from a custom directory.
 
 - The directory path
@@ -111,13 +109,13 @@ exports.fire = ( data ) => {
 
 `wpscan` will run every custom rule file. The file naming does not matter. Feel free to create your own rules, enjoy!
 
-**Get inspired**
+##### Get inspired
 - [example custom rules](example/rules)
 - [wpscan default rules](lib/rules)
 
 
-Ignore rule(s)
------
+### Ignore rule(s)
+
 `wpscan` can skip certain [default](lib/rules) and custom rules. The CLI option `--ignore-rule` takes a rule name, the rule name is the JavaScript file name of the rule without path. Multiple rule filtering is possible by a multiple use of the CLI option.
 
 ```bash
@@ -127,8 +125,8 @@ wpscan ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js
 ```
 
 
-Bulk scan
------
+### Bulk scan
+
 Multiple WordPress site URLs can be imported from a single file. This is a simple text file with one URL per line.
 
 ```bash
@@ -136,5 +134,4 @@ wpscan -b ~/path/to/sources.txt
 ```
 
 
-Use, don't abuse!
------
+### Use, don't abuse!
