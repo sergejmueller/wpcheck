@@ -1,5 +1,9 @@
 {
-    "format": "\nUsage\n\t%s\n\nOptions\n\t%s\n",
+    "format": "\nName\n\t%s\n\nUsage\n\t%s\n\nOptions\n\t%s\n",
+    "name": [
+        "Vulnerability scanner for WordPress",
+        "https://github.com/sergejmueller/wpscan"
+    ],
     "usage": "wpscan <url> [url] [options]",
     "options": [
         "-s, --silent       Disable success and info messages",

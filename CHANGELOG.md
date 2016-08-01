@@ -1,6 +1,24 @@
 # wpscan / CHANGELOG
 
 
+### v0.6.0 (2016-08-01)
+
+##### New
+* Rule: Scan WordPress for FPD vulnerability
+
+##### Changes
+* Core: Add filter name to the log output
+* Core: Add module description to `wpscan --help`
+* Core: Add function `fileName` to `lib/finder.js`
+* Rule: Rename `file-exists.js` into `sensitive-files.js`
+* Rule: Rename `finder.js` into `fs.js`
+* Rule: Refactor all wpscan rules
+* Test: Refactor some test rules
+* Readme: Text changes
+* Howto: Text changes
+* package.json: Update `mocha` and `eslint` versions
+
+
 ### v0.5.5 (2016-07-28)
 
 ##### Changes

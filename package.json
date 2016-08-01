@@ -1,6 +1,6 @@
 {
   "name": "wpscan",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "description": "Vulnerability scanner for WordPress",
   "preferGlobal": true,
   "main": "index.js",
@@ -29,6 +29,7 @@
   "dependencies": {
     "colors": "^1.1.2",
     "minimist": "^1.2.0",
+    "pad-end": "^1.0.2",
     "prepend-http": "^1.0.4",
     "request": "^2.74.0",
     "rtrim": "^0.0.3",
@@ -36,9 +37,9 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "eslint": "^3.1.1",
+    "eslint": "^3.2.0",
     "must": "^0.13.2",
-    "mocha": "^2.5.1",
+    "mocha": "^3.0.0",
     "child-process-promise": "^2.0.3"
   },
   "scripts": {
