@@ -15,7 +15,7 @@ describe( 'wpscan CLI', () => {
      * wpscan a invalid URL
      */
 
-    it( 'wpscan https:/google.com', ( done ) => {
+    it( '1. wpscan https:/google.com', ( done ) => {
 
         exec( 'wpscan https:/google.com' ).then( result => {
 
@@ -34,7 +34,7 @@ describe( 'wpscan CLI', () => {
      * wpscan a non-resolvable URL
      */
 
-    it( 'wpscan https://google.comm', ( done ) => {
+    it( '2. wpscan https://google.comm', ( done ) => {
 
         exec( 'wpscan https://google.comm' ).then( result => {
 
@@ -53,7 +53,7 @@ describe( 'wpscan CLI', () => {
      * wpscan a non-WordPress page
      */
 
-    it( 'wpscan https://www.google.de', ( done ) => {
+    it( '3. wpscan https://www.google.de', ( done ) => {
 
         exec( 'wpscan https://www.google.de' ).then( result => {
 
@@ -72,7 +72,7 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL
      */
 
-    it( `wpscan ${testURI}`, ( done ) => {
+    it( `4. wpscan ${testURI}`, ( done ) => {
 
         exec( `wpscan ${testURI}` ).then( result => {
 
@@ -91,6 +91,7 @@ describe( 'wpscan CLI', () => {
             data.must.include( `${testURI}/wp-content/debug.log is not public` )
             data.must.include( `${testURI}/wp-login.php use HTTPS protocol` )
             data.must.include( `${testURI}/wp-login.php is protected by HTTP Auth` )
+            data.must.include( `${testURI} is not affected by FPD vulnerability` )
 
             done()
 
@@ -103,7 +104,7 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL with custom rules
      */
 
-    it( `wpscan ${testURI} --rules-dir ./example/rules`, ( done ) => {
+    it( `5. wpscan ${testURI} --rules-dir ./example/rules`, ( done ) => {
 
         exec( `wpscan ${testURI} --rules-dir ./example/rules` ).then( result => {
 
@@ -122,7 +123,7 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL with non-resolvable rules
      */
 
-    it( `wpscan ${testURI} -r ~/example/rules`, ( done ) => {
+    it( `6. wpscan ${testURI} -r ~/example/rules`, ( done ) => {
 
         exec( `wpscan ${testURI} -r ~/example/rules` ).then( result => {
 
@@ -141,7 +142,7 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL in silent mode
      */
 
-    it( `wpscan ${testURI} --silent`, ( done ) => {
+    it( `7. wpscan ${testURI} --silent`, ( done ) => {
 
         exec( `wpscan ${testURI} --silent` ).then( result => {
 
@@ -160,7 +161,7 @@ describe( 'wpscan CLI', () => {
      * wpscan multiple WordPress URLs in silent mode
      */
 
-    it( `wpscan ${testURI} https://wpengine.com --silent`, ( done ) => {
+    it( `8. wpscan ${testURI} https://wpengine.com --silent`, ( done ) => {
 
         exec( `wpscan ${testURI} https://wpengine.com --silent` ).then( result => {
 
@@ -179,7 +180,7 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL without protocol in silent mode
      */
 
-    it( `wpscan ${testURI} -s`, ( done ) => {
+    it( `9. wpscan ${testURI} -s`, ( done ) => {
 
         exec( `wpscan ${testURI} -s` ).then( result => {
 
@@ -198,7 +199,7 @@ describe( 'wpscan CLI', () => {
      * wpscan multiple WordPress URLs without protocol in silent mode
      */
 
-    it( `wpscan ${testURI} wpengine.com -s`, ( done ) => {
+    it( `10. wpscan ${testURI} wpengine.com -s`, ( done ) => {
 
         exec( `wpscan ${testURI} wpengine.com -s` ).then( result => {
 
@@ -217,7 +218,7 @@ describe( 'wpscan CLI', () => {
      * wpscan multiple WordPress URLs readed from a bulk file in silent mode
      */
 
-    it( `wpscan -b ./example/sources/list.txt -s`, ( done ) => {
+    it( `11. wpscan -b ./example/sources/list.txt -s`, ( done ) => {
 
         exec( `wpscan -b ./example/sources/list.txt -s` ).then( result => {
 
@@ -236,7 +237,7 @@ describe( 'wpscan CLI', () => {
      * wpscan additional WordPress URLs readed from a bulk file in silent mode
      */
 
-    it( `wpscan ${testURI} -b ./example/sources/list.txt -s`, ( done ) => {
+    it( `12. wpscan ${testURI} -b ./example/sources/list.txt -s`, ( done ) => {
 
         exec( `wpscan ${testURI} -b ./example/sources/list.txt -s` ).then( result => {
 
@@ -255,9 +256,9 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL with a ignored rule
      */
 
-    it( `wpscan ${testURI} --ignore-rule wp-login.js`, ( done ) => {
+    it( `13. wpscan ${testURI} -i wp-login.js`, ( done ) => {
 
-        exec( `wpscan ${testURI} --ignore-rule wp-login.js` ).then( result => {
+        exec( `wpscan ${testURI} -i wp-login.js` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -275,9 +276,9 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL with multiple ignored rules
      */
 
-    it( `wpscan ${testURI} --ignore-rule wp-login.js --ignore-rule files-exists.js`, ( done ) => {
+    it( `14. wpscan ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js`, ( done ) => {
 
-        exec( `wpscan ${testURI} --ignore-rule wp-login.js --ignore-rule files-exists.js` ).then( result => {
+        exec( `wpscan ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -295,6 +296,7 @@ describe( 'wpscan CLI', () => {
             data.must.not.include( `${testURI}/wp-content/debug.log is not public` )
             data.must.not.include( `${testURI}/wp-login.php use HTTPS protocol` )
             data.must.not.include( `${testURI}/wp-login.php is not protected by HTTP Auth` )
+            data.must.not.include( `${testURI} is not affected by FPD vulnerability` )
 
             done()
 
@@ -307,9 +309,9 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL with a ignored custom rule
      */
 
-    it( `wpscan ${testURI} --rules-dir ./example/rules --ignore-rule custom-rule.js`, ( done ) => {
+    it( `15. wpscan ${testURI} --rules-dir ./example/rules -i custom-rule.js`, ( done ) => {
 
-        exec( `wpscan ${testURI} --rules-dir ./example/rules --ignore-rule custom-rule.js` ).then( result => {
+        exec( `wpscan ${testURI} --rules-dir ./example/rules -i custom-rule.js` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -326,14 +328,19 @@ describe( 'wpscan CLI', () => {
      * wpscan Help
      */
 
-    it( 'wpscan --help', ( done ) => {
+    it( '16. wpscan --help', ( done ) => {
 
         exec( 'wpscan --help' ).then( result => {
 
             const data = result.stdout.trim()
 
+            data.must.include( 'Name' )
+            data.must.include( 'Vulnerability scanner for WordPress' )
+            data.must.include( 'https://github.com/sergejmueller/wpscan' )
+
             data.must.include( 'Usage' )
             data.must.include( 'wpscan <url> [url] [options]' )
+
             data.must.include( 'Options' )
             data.must.include( '-s, --silent       Disable success and info messages' )
             data.must.include( '-r, --rules-dir    Load and execute additional rules from any directory' )

@@ -1,4 +1,4 @@
-# wpscan / HOWTO
+# wpscan
 
 `wpscan` [Node.js module](https://www.npmjs.com/package/wpscan) allows you to quickly scan WordPress sites looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
 
@@ -19,7 +19,7 @@
   - WordPress installed in a subdirectory.
 - Changeable User-Agent string.
 - Silent mode displays warnings only.
-- Howto: WordPress security [best practices](HOWTO.md).
+- Howto: [WordPress security best practices](HOWTO.md).
 - Beginner friendly, easy to install.
 - Lightweight, cross plattform framework.
 - **Work in progress**, see [todos](TODO.md) and [changelog](CHANGELOG.md).
@@ -71,9 +71,9 @@ wpscan https://ma.tt --ignore-rule wp-login.js
 
 ### Default rules
 
-`wpscan` has a few rules that are enabled by default:
+`wpscan` has a few rules that are enabled by default. Follow also our [WordPress security best practices](HOWTO.md) to fix vulnerabilities detected by `wpscan` default rules.
 
-- Check sensitive WordPress/Apache/Dot files for their availability
+##### 1. Checks sensitive WordPress/Apache/Dot files for their availability
   - `/wp-config.php`
   - `/wp-admin/maint/repair.php`
   - `/.htaccess`
@@ -82,13 +82,14 @@ wpscan https://ma.tt --ignore-rule wp-login.js
   - `/.npmrc`
   - `/.gitconfig`
   - `/config.json`
-  - `/config.gypi`
   - `/wp-config-sample.php`
   - `/wp-content/debug.log`
 
-- Scan WordPress login page for security mistakes
+##### 2. Scans WordPress login page for security mistakes
   - Basic access authentication
   - HTTPS protocol usage
+
+##### 3. Checks whether WordPress is affected by FPD vulnerability
 
 
 ### Custom rules
@@ -99,6 +100,8 @@ The power of `wpscan` is the flexibility: You can expand the tool functionality 
   - can be absolute or relative to the `wpscan` folder
 - The custom rules
   - must be stored as `.js` files
+  - can be a `Node.js` script
+  - can be a `npm` package
   - need to be structured as follows:
 
 ```javascript
@@ -120,7 +123,7 @@ exports.fire = ( data ) => {
 
 ```bash
 wpscan ma.tt --ignore-rule wp-login.js
-wpscan ma.tt --ignore-rule wp-login.js --ignore-rule files-exists.js
+wpscan ma.tt --ignore-rule wp-login.js --ignore-rule sensitive-files.js
 wpscan ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js
 ```
 

@@ -5,6 +5,7 @@ engines:
     enabled: true
     exclude_paths:
     - test/
+    - lib/log.js
     config:
       languages:
         javascript:
