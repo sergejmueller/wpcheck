@@ -19,7 +19,7 @@
   - WordPress installed in a subdirectory.
 - Changeable User-Agent string.
 - Silent mode displays warnings only.
-- Howto: [WordPress security best practices](HOWTO.md).
+- Fix issues: [WordPress security best practices](HOWTO.md).
 - Beginner friendly, easy to install.
 - Lightweight, cross plattform framework.
 - **Work in progress**, see [todos](TODO.md) and [changelog](CHANGELOG.md).
@@ -102,15 +102,16 @@ The power of `wpscan` is the flexibility: You can expand the tool functionality 
   - must be stored as `.js` files
   - can be a `Node.js` script
   - can be a `npm` package
-  - need to be structured as follows:
+  - must have a exported function named `fire`
 
 ```javascript
 exports.fire = ( data ) => {
-  // console.log( data )
+    // Play with data
+    // console.log( data )
 }
 ```
 
-`wpscan` will run every custom rule file. The file naming does not matter. Feel free to create your own rules, enjoy!
+`wpscan` will run (technically `require`) every custom rule file. The file naming does not matter, short names are welcome. Feel free to create your own rules, enjoy!
 
 ##### Get inspired
 - [example custom rules](example/rules)

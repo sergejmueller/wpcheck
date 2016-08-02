@@ -1,6 +1,15 @@
 # wpscan / CHANGELOG
 
 
+### v0.6.1 (2016-08-02)
+
+##### Changes
+* Test: Verify filter naming output
+* Todo: Remove & restructure tasks
+* Readme: Text changes
+* package.json: Update `eslint` version
+
+
 ### v0.6.0 (2016-08-01)
 
 ##### New

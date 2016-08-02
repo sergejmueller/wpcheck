@@ -93,6 +93,10 @@ describe( 'wpscan CLI', () => {
             data.must.include( `${testURI}/wp-login.php is protected by HTTP Auth` )
             data.must.include( `${testURI} is not affected by FPD vulnerability` )
 
+            data.must.include( 'wp-login' )
+            data.must.include( 'sensitive-files' )
+            data.must.include( 'fpd-vulnerability' )
+
             done()
 
         } )

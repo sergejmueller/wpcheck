@@ -90,7 +90,7 @@ Modify `mod_php5.c` to `mod_php7.c` if PHP7 is installed on your server.
 
 ### Nice to have
 
-###### Move WordPress default folders
+##### Move WordPress default folders
 
 * [wp-content](https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder)
 * [plugins](https://codex.wordpress.org/Editing_wp-config.php#Moving_plugin_folder)

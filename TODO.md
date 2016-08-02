@@ -1,13 +1,9 @@
 ### Open todos
 
-- [ ] Rule: Registration possibility
-- [ ] Rule: Default admin user
-- [ ] Rule: Available users
-- [ ] Rule: WordPress DB default prefix
-- [ ] Rule: Error display status
-- [ ] Rule: Directory browsing
-- [ ] Rule: WordPress version (e.g. `wp-links-opml.php`)
-- [ ] Rule: Theme version
-- [ ] Rule: Plugins versions
-- [ ] Rule: Vulnerabilities via https://wpvulndb.com
-- [ ] Nice: Output rule keys for a better search
+- [ ] Rule: Check for directory browsing
+- [ ] Rule: Check for registration possibility
+- [ ] Rule: Check for default admin user
+- [ ] Rule: Detect and compare WordPress version (from `wp-links-opml.php`, ...)
+- [ ] Rule: Detect and compare theme version
+- [ ] Rule: Detect and compare plugins versions
+- [ ] Rule: Get vulnerabilities from https://wpvulndb.com
