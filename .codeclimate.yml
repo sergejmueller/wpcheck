@@ -2,14 +2,7 @@ engines:
   eslint:
     enabled: true
   duplication:
-    enabled: true
-    exclude_paths:
-    - test/
-    - lib/log.js
-    config:
-      languages:
-        javascript:
-          mass_threshold: 50
+    enabled: false
 ratings:
   paths:
   - index.js
