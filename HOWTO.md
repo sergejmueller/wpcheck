@@ -88,6 +88,17 @@ The [Full Path Disclosure](https://www.owasp.org/index.php/Full_Path_Disclosure)
 Modify `mod_php5.c` to `mod_php7.c` if PHP7 is installed on your server.
 
 
+### 4. Prevent directory listing
+-----
+Filter name: `directory-listing`
+
+Depending on the [Apache configuration](https://wiki.apache.org/httpd/DirectoryListings) your visitors can get a directory listing of all the files in a folder. To prevent this mistake add the following line to your `.htaccess` file:
+
+```apacheconf
+Options -Indexes
+```
+
+
 ### Nice to have
 
 ##### Move WordPress default folders

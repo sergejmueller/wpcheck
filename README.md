@@ -1,6 +1,6 @@
 # wpscan
 
-`wpscan` [Node.js module](https://www.npmjs.com/package/wpscan) allows you to quickly scan WordPress sites looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
+[wpscan](https://www.npmjs.com/package/wpscan) is a Node.js CLI tool that allows you to quickly scan WordPress sites looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
 
 [![Dependency Status](https://david-dm.org/sergejmueller/wpscan.svg)](https://david-dm.org/sergejmueller/wpscan)
 [![Code Climate](https://codeclimate.com/github/sergejmueller/wpscan/badges/gpa.svg)](https://codeclimate.com/github/sergejmueller/wpscan)
@@ -90,6 +90,8 @@ wpscan https://ma.tt --ignore-rule wp-login.js
   - HTTPS protocol usage
 
 ##### 3. Checks whether WordPress is affected by FPD vulnerability
+
+##### 4. Checks whether the Apache directory listing is activated
 
 
 ### Custom rules

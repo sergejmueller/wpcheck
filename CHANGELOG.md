@@ -1,6 +1,19 @@
 # wpscan / CHANGELOG
 
 
+### v0.7.0 (2016-08-04)
+
+##### New
+* Rule: Scan for Apache Directory Listing
+
+##### Changes
+* Test: Add *Directory listing* tests
+* Howto: Add *Directory listing* part
+* Todo: Remove *Directory listing* part
+* Readme: Text changes
+* package.json: Update `mocha` version
+
+
 ### v0.6.1 (2016-08-02)
 
 ##### Changes

@@ -92,10 +92,12 @@ describe( 'wpscan CLI', () => {
             data.must.include( `${testURI}/wp-login.php use HTTPS protocol` )
             data.must.include( `${testURI}/wp-login.php is protected by HTTP Auth` )
             data.must.include( `${testURI} is not affected by FPD vulnerability` )
+            data.must.include( `${testURI} has directory listing off` )
 
             data.must.include( 'wp-login' )
             data.must.include( 'sensitive-files' )
             data.must.include( 'fpd-vulnerability' )
+            data.must.include( 'directory-listing' )
 
             done()
 
@@ -280,9 +282,9 @@ describe( 'wpscan CLI', () => {
      * wpscan a single WordPress URL with multiple ignored rules
      */
 
-    it( `14. wpscan ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js`, ( done ) => {
+    it( `14. wpscan ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js -i directory-listing.js`, ( done ) => {
 
-        exec( `wpscan ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js` ).then( result => {
+        exec( `wpscan ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js -i directory-listing.js` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -301,6 +303,7 @@ describe( 'wpscan CLI', () => {
             data.must.not.include( `${testURI}/wp-login.php use HTTPS protocol` )
             data.must.not.include( `${testURI}/wp-login.php is not protected by HTTP Auth` )
             data.must.not.include( `${testURI} is not affected by FPD vulnerability` )
+            data.must.not.include( `${testURI} has directory listing off` )
 
             done()
 
