@@ -1,6 +1,5 @@
 ### Open todos
 
-- [ ] Rule: Check for directory browsing
 - [ ] Rule: Check for registration possibility
 - [ ] Rule: Check for default admin user
 - [ ] Rule: Detect and compare WordPress version (from `wp-links-opml.php`, ...)
