@@ -1,6 +1,13 @@
 # wpscan / CHANGELOG
 
 
+### v0.7.1 (2016-08-15)
+
+##### Changes
+* Readme: Fixes a few typos (#24)
+* Readme: Remove `[root]` prefix from `install` command (#23)
+
+
 ### v0.7.0 (2016-08-04)
 
 ##### New
