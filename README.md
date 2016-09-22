@@ -115,7 +115,7 @@ exports.fire = ( data ) => {
 }
 ```
 
-`wpscan` will run (technically `require`) every custom rule file. The file naming does not matter, short names are welcome. Feel free to create your own rules, enjoy!
+`wpscan` will run (technically `require`) every custom rule file. The file naming does not matter, short and unique names are welcome. Feel free to create your own rules, enjoy!
 
 ##### Get inspired
 - [example custom rules](example/rules)
