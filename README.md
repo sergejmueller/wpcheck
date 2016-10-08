@@ -32,7 +32,7 @@ npm install --global wpscan
 ```
 
 ##### Notes
-* `wpscan` requires `Node.js >= 4` and [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
+* `wpscan` requires `Node.js >= 6` and [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
 * [Fix](https://docs.npmjs.com/getting-started/fixing-npm-permissions) `npm` permissions if you get the `Permission denied` error.
 
 

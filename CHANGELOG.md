@@ -1,6 +1,17 @@
 # wpscan / CHANGELOG
 
 
+### v0.7.2 (2016-10-08)
+
+##### Changes
+* Travis: Remove `node_js` v4 & v5
+* package.json: Update `mocha`, `request`, `eslint`, `child-process-promise`
+* Readme: Set Node.js version to `>= 6`
+* package.json: Set `engines.node` to `>= 6`
+* gitignore: Add `.idea` rule
+* Closes #27
+
+
 ### v0.7.1 (2016-08-15)
 
 ##### Changes
