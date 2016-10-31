@@ -89,7 +89,7 @@ describe( 'wpscan CLI', () => {
             data.must.include( `${testURI}/wp-config-sample.php is not public` )
             data.must.include( `${testURI}/wp-admin/maint/repair.php is not public` )
             data.must.include( `${testURI}/wp-content/debug.log is not public` )
-            data.must.include( `${testURI}/wp-login.php use HTTPS protocol` )
+            data.must.include( `${testURI}/wp-login.php uses HTTPS protocol` )
             data.must.include( `${testURI}/wp-login.php is protected by HTTP Auth` )
             data.must.include( `${testURI} is not affected by FPD vulnerability` )
             data.must.include( `${testURI} has directory listing off` )
@@ -268,7 +268,7 @@ describe( 'wpscan CLI', () => {
 
             const data = result.stdout.trim()
 
-            data.must.not.include( `${testURI}/wp-login.php use HTTPS protocol` )
+            data.must.not.include( `${testURI}/wp-login.php uses HTTPS protocol` )
             data.must.not.include( `${testURI}/wp-login.php is protected by HTTP Auth` )
 
             done()
@@ -300,7 +300,7 @@ describe( 'wpscan CLI', () => {
             data.must.not.include( `${testURI}/wp-config-sample.php is not public` )
             data.must.not.include( `${testURI}/wp-admin/maint/repair.php is public but safe` )
             data.must.not.include( `${testURI}/wp-content/debug.log is not public` )
-            data.must.not.include( `${testURI}/wp-login.php use HTTPS protocol` )
+            data.must.not.include( `${testURI}/wp-login.php uses HTTPS protocol` )
             data.must.not.include( `${testURI}/wp-login.php is not protected by HTTP Auth` )
             data.must.not.include( `${testURI} is not affected by FPD vulnerability` )
             data.must.not.include( `${testURI} has directory listing off` )
