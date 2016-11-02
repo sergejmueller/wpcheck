@@ -12,7 +12,7 @@
         "silent": false,
         "rules-dir": null,
         "bulk-file": null,
-        "user-agent": "wpscan",
+        "user-agent": "wpcheck",
         "ignore-rule": []
     },
     "string": [

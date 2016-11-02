@@ -1,4 +1,4 @@
-# wpscan / HOWTO
+# wpcheck / HOWTO
 
 How can you protect your WordPress installation? Here are some best practices to protect against attackers. It's no rocket science.
 

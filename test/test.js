@@ -8,16 +8,16 @@ const exec = require( 'child-process-promise' ).exec
 const testURI = require( '../config/test.json' ).testURI
 
 
-describe( 'wpscan CLI', () => {
+describe( 'wpcheck CLI', () => {
 
 
     /**
-     * wpscan a invalid URL
+     * wpcheck a invalid URL
      */
 
-    it( '1. wpscan https:/google.com', ( done ) => {
+    it( '1. wpcheck https:/google.com', ( done ) => {
 
-        exec( 'wpscan https:/google.com' ).then( result => {
+        exec( 'wpcheck https:/google.com' ).then( result => {
 
             const data = result.stderr.trim()
 
@@ -31,12 +31,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a non-resolvable URL
+     * wpcheck a non-resolvable URL
      */
 
-    it( '2. wpscan https://google.comm', ( done ) => {
+    it( '2. wpcheck https://google.comm', ( done ) => {
 
-        exec( 'wpscan https://google.comm' ).then( result => {
+        exec( 'wpcheck https://google.comm' ).then( result => {
 
             const data = result.stderr.trim()
 
@@ -50,12 +50,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a non-WordPress page
+     * wpcheck a non-WordPress page
      */
 
-    it( '3. wpscan https://www.google.de', ( done ) => {
+    it( '3. wpcheck https://www.google.de', ( done ) => {
 
-        exec( 'wpscan https://www.google.de' ).then( result => {
+        exec( 'wpcheck https://www.google.de' ).then( result => {
 
             const data = result.stderr.trim()
 
@@ -69,12 +69,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a single WordPress URL
+     * wpcheck a single WordPress URL
      */
 
-    it( `4. wpscan ${testURI}`, ( done ) => {
+    it( `4. wpcheck ${testURI}`, ( done ) => {
 
-        exec( `wpscan ${testURI}` ).then( result => {
+        exec( `wpcheck ${testURI}` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -107,16 +107,16 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a single WordPress URL with custom rules
+     * wpcheck a single WordPress URL with custom rules
      */
 
-    it( `5. wpscan ${testURI} --rules-dir ./example/rules`, ( done ) => {
+    it( `5. wpcheck ${testURI} --rules-dir ./example/rules`, ( done ) => {
 
-        exec( `wpscan ${testURI} --rules-dir ./example/rules` ).then( result => {
+        exec( `wpcheck ${testURI} --rules-dir ./example/rules` ).then( result => {
 
             const data = result.stdout.trim()
 
-            data.must.include( 'Custom wpscan rule is fired' )
+            data.must.include( 'Custom wpcheck rule is fired' )
 
             done()
 
@@ -126,12 +126,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a single WordPress URL with non-resolvable rules
+     * wpcheck a single WordPress URL with non-resolvable rules
      */
 
-    it( `6. wpscan ${testURI} -r ~/example/rules`, ( done ) => {
+    it( `6. wpcheck ${testURI} -r ~/example/rules`, ( done ) => {
 
-        exec( `wpscan ${testURI} -r ~/example/rules` ).then( result => {
+        exec( `wpcheck ${testURI} -r ~/example/rules` ).then( result => {
 
             const data = result.stderr.trim()
 
@@ -145,12 +145,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a single WordPress URL in silent mode
+     * wpcheck a single WordPress URL in silent mode
      */
 
-    it( `7. wpscan ${testURI} --silent`, ( done ) => {
+    it( `7. wpcheck ${testURI} --silent`, ( done ) => {
 
-        exec( `wpscan ${testURI} --silent` ).then( result => {
+        exec( `wpcheck ${testURI} --silent` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -164,12 +164,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan multiple WordPress URLs in silent mode
+     * wpcheck multiple WordPress URLs in silent mode
      */
 
-    it( `8. wpscan ${testURI} https://wpengine.com --silent`, ( done ) => {
+    it( `8. wpcheck ${testURI} https://wpengine.com --silent`, ( done ) => {
 
-        exec( `wpscan ${testURI} https://wpengine.com --silent` ).then( result => {
+        exec( `wpcheck ${testURI} https://wpengine.com --silent` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -183,12 +183,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a single WordPress URL without protocol in silent mode
+     * wpcheck a single WordPress URL without protocol in silent mode
      */
 
-    it( `9. wpscan ${testURI} -s`, ( done ) => {
+    it( `9. wpcheck ${testURI} -s`, ( done ) => {
 
-        exec( `wpscan ${testURI} -s` ).then( result => {
+        exec( `wpcheck ${testURI} -s` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -202,12 +202,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan multiple WordPress URLs without protocol in silent mode
+     * wpcheck multiple WordPress URLs without protocol in silent mode
      */
 
-    it( `10. wpscan ${testURI} wpengine.com -s`, ( done ) => {
+    it( `10. wpcheck ${testURI} wpengine.com -s`, ( done ) => {
 
-        exec( `wpscan ${testURI} wpengine.com -s` ).then( result => {
+        exec( `wpcheck ${testURI} wpengine.com -s` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -221,12 +221,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan multiple WordPress URLs readed from a bulk file in silent mode
+     * wpcheck multiple WordPress URLs readed from a bulk file in silent mode
      */
 
-    it( `11. wpscan -b ./example/sources/list.txt -s`, ( done ) => {
+    it( `11. wpcheck -b ./example/sources/list.txt -s`, ( done ) => {
 
-        exec( `wpscan -b ./example/sources/list.txt -s` ).then( result => {
+        exec( `wpcheck -b ./example/sources/list.txt -s` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -240,12 +240,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan additional WordPress URLs readed from a bulk file in silent mode
+     * wpcheck additional WordPress URLs readed from a bulk file in silent mode
      */
 
-    it( `12. wpscan ${testURI} -b ./example/sources/list.txt -s`, ( done ) => {
+    it( `12. wpcheck ${testURI} -b ./example/sources/list.txt -s`, ( done ) => {
 
-        exec( `wpscan ${testURI} -b ./example/sources/list.txt -s` ).then( result => {
+        exec( `wpcheck ${testURI} -b ./example/sources/list.txt -s` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -259,12 +259,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a single WordPress URL with a ignored rule
+     * wpcheck a single WordPress URL with a ignored rule
      */
 
-    it( `13. wpscan ${testURI} -i wp-login.js`, ( done ) => {
+    it( `13. wpcheck ${testURI} -i wp-login.js`, ( done ) => {
 
-        exec( `wpscan ${testURI} -i wp-login.js` ).then( result => {
+        exec( `wpcheck ${testURI} -i wp-login.js` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -279,12 +279,12 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a single WordPress URL with multiple ignored rules
+     * wpcheck a single WordPress URL with multiple ignored rules
      */
 
-    it( `14. wpscan ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js -i directory-listing.js`, ( done ) => {
+    it( `14. wpcheck ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js -i directory-listing.js`, ( done ) => {
 
-        exec( `wpscan ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js -i directory-listing.js` ).then( result => {
+        exec( `wpcheck ${testURI} -i wp-login.js -i sensitive-files.js -i fpd-vulnerability.js -i directory-listing.js` ).then( result => {
 
             const data = result.stdout.trim()
 
@@ -313,16 +313,16 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan a single WordPress URL with a ignored custom rule
+     * wpcheck a single WordPress URL with a ignored custom rule
      */
 
-    it( `15. wpscan ${testURI} --rules-dir ./example/rules -i custom-rule.js`, ( done ) => {
+    it( `15. wpcheck ${testURI} --rules-dir ./example/rules -i custom-rule.js`, ( done ) => {
 
-        exec( `wpscan ${testURI} --rules-dir ./example/rules -i custom-rule.js` ).then( result => {
+        exec( `wpcheck ${testURI} --rules-dir ./example/rules -i custom-rule.js` ).then( result => {
 
             const data = result.stdout.trim()
 
-            data.must.not.include( 'Custom wpscan rule fired!' )
+            data.must.not.include( 'Custom wpcheck rule fired!' )
 
             done()
 
@@ -332,21 +332,21 @@ describe( 'wpscan CLI', () => {
 
 
     /**
-     * wpscan Help
+     * wpcheck Help
      */
 
-    it( '16. wpscan --help', ( done ) => {
+    it( '16. wpcheck --help', ( done ) => {
 
-        exec( 'wpscan --help' ).then( result => {
+        exec( 'wpcheck --help' ).then( result => {
 
             const data = result.stdout.trim()
 
             data.must.include( 'Name' )
             data.must.include( 'Vulnerability scanner for WordPress' )
-            data.must.include( 'https://github.com/sergejmueller/wpscan' )
+            data.must.include( 'https://github.com/sergejmueller/wpcheck' )
 
             data.must.include( 'Usage' )
-            data.must.include( 'wpscan <url> [url] [options]' )
+            data.must.include( 'wpcheck <url> [url] [options]' )
 
             data.must.include( 'Options' )
             data.must.include( '-s, --silent       Disable success and info messages' )

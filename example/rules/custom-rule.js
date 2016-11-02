@@ -1,7 +1,7 @@
 
 /**
- * wpscan module custom-rule.js
- * Example custom wpscan module
+ * wpcheck module custom-rule.js
+ * Example custom wpcheck module
  */
 
 
@@ -14,7 +14,7 @@
 
 exports.fire = ( data ) => {
 
-    console.log( 'Custom wpscan rule is fired' )
+    console.log( 'Custom wpcheck rule is fired' )
 
     console.log( data )
 
