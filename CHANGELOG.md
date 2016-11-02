@@ -1,4 +1,17 @@
-# wpscan / CHANGELOG
+# wpcheck / CHANGELOG
+
+
+### 1.0.0 (2016-11-02)
+
+##### New
+* Rename project into `wpcheck` (closes #29)
+* Add ESLint `node` plugin
+* Add `yarn.lock` file
+
+##### Changes
+* `.eslintrc.json`: Rename `.eslintrc`
+* `.gitignore`: Remove `*.lock` and `.idea`
+* `README.md`: Add `yarn add global` command
 
 
 ### v0.7.2 (2016-10-08)
@@ -48,11 +61,11 @@
 
 ##### Changes
 * Core: Add filter name to the log output
-* Core: Add module description to `wpscan --help`
+* Core: Add module description to `wpcheck --help`
 * Core: Add function `fileName` to `lib/finder.js`
 * Rule: Rename `file-exists.js` into `sensitive-files.js`
 * Rule: Rename `finder.js` into `fs.js`
-* Rule: Refactor all wpscan rules
+* Rule: Refactor all wpcheck rules
 * Test: Refactor some test rules
 * Readme: Text changes
 * Howto: Text changes
@@ -80,9 +93,9 @@
 
 ##### Changes
 * Core: Refactor all JS files for ES6 support
-* Core: Add `url.js` as a new `wpscan` module
+* Core: Add `url.js` as a new `wpcheck` module
 * Core: Remove `app-module-path` `npm` module
-* Core: Remove `helpers.js` `wpscan` module
+* Core: Remove `helpers.js` `wpcheck` module
 * Core: Update `request` `npm` module to v2.74.0
 * Test: Use a testcase domain
 * Readme: Text changes
@@ -124,7 +137,7 @@
 ##### New
 * Option: `--help` outputs supplied help text
 * Core: Add timeout to initial app requests
-* Test: Add `wpscan --help` case
+* Test: Add `wpcheck --help` case
 * Readme: Add `Default rules` part
 * Readme: Add `--help` option
 
@@ -132,7 +145,7 @@
 * Core: Refactor app singletons
 * Example: Rename `./examples` → `./example`
 * Example: Rename `sources.txt` → `sources/list.txt`
-* package.json: Set `repository` → `sergejmueller/wpscan`
+* package.json: Set `repository` → `sergejmueller/wpcheck`
 * package.json: Set `engines.node` → `>=4`
 * package.json: Set `files` → `["lib","index.js","config.json"]`
 
@@ -157,7 +170,7 @@
 ##### Changes
 * Core: Refactor `index.js`
 * Core: Export config data into `config.json`
-* Core: Set the default User-Agent to `wpscan`
+* Core: Set the default User-Agent to `wpcheck`
 * Core: Split error and status code warnings
 * Readme: Text changes
 

@@ -10,7 +10,7 @@ if ( ! require( 'semver' ).satisfies(
 }
 
 
-require( './lib/app' ).wpscan(
+require( './lib/app' ).wpcheck(
     require( 'minimist' )(
         process.argv.slice( 2 ),
         require( './config/minimist.json' )

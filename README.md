@@ -1,11 +1,11 @@
-# wpscan
+# wpcheck
 
-[wpscan](https://www.npmjs.com/package/wpscan) is a Node.js CLI tool that allows you to quickly scan WordPress sites looking for known vulnerabilities, security issues and misconfigurations. `wpscan` helps you secure and maintain your WordPress against hackers.
+`wpcheck` is a Node.js CLI tool that allows you to quickly scan WordPress sites looking for known vulnerabilities, security issues and misconfigurations. `wpcheck` helps you secure and maintain your WordPress against hackers.
 
-[![Dependency Status](https://david-dm.org/sergejmueller/wpscan.svg)](https://david-dm.org/sergejmueller/wpscan)
-[![Code Climate](https://codeclimate.com/github/sergejmueller/wpscan/badges/gpa.svg)](https://codeclimate.com/github/sergejmueller/wpscan)
-[![Build Status](https://travis-ci.org/sergejmueller/wpscan.svg?branch=master)](https://travis-ci.org/sergejmueller/wpscan)
-[![Known Vulnerabilities](https://snyk.io/test/github/sergejmueller/wpscan/badge.svg)](https://snyk.io/test/github/sergejmueller/wpscan)
+[![Dependency Status](https://david-dm.org/sergejmueller/wpcheck.svg)](https://david-dm.org/sergejmueller/wpcheck)
+[![Code Climate](https://codeclimate.com/github/sergejmueller/wpcheck/badges/gpa.svg)](https://codeclimate.com/github/sergejmueller/wpcheck)
+[![Build Status](https://travis-ci.org/sergejmueller/wpcheck.svg?branch=master)](https://travis-ci.org/sergejmueller/wpcheck)
+[![Known Vulnerabilities](https://snyk.io/test/github/sergejmueller/wpcheck/badge.svg)](https://snyk.io/test/github/sergejmueller/wpcheck)
 
 
 ### Features
@@ -27,19 +27,25 @@
 
 ### Install
 
+```bash
+npm install --global wpcheck
 ```
-npm install --global wpscan
+
+*or*
+
+```bash
+yarn global add wpcheck
 ```
 
 ##### Notes
-* `wpscan` requires `Node.js >= 6` and [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
+* `wpcheck` requires `Node.js >= 6` and [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
 * [Fix](https://docs.npmjs.com/getting-started/fixing-npm-permissions) `npm` permissions if you get the `Permission denied` error.
 
 
 ### Usage
 
 ```bash
-wpscan <url> [url] [options]
+wpcheck <url> [url] [options]
 ```
 
 `url` → WordPress site URL (e.g. `https://ma.tt`)
@@ -56,24 +62,24 @@ Option | Shortcut | Description
 `--rules-dir` | `-r` | Loads additional rules from a directory (see [Custom rules](#custom-rules)).
 `--bulk-file` | `-b` | Reads additional WordPress site URLs from a text file (see [Bulk scan](#bulk-scan)).
 `--ignore-rule` | `-i` | Skips loading and execution of a specific rule (see [Ignore rules](#ignore-rules)).
-`--user-agent` | `-u` | Defines a custom `User-Agent` string. Default is `wpscan`.
+`--user-agent` | `-u` | Defines a custom `User-Agent` string. Default is `wpcheck`.
 
 
 ### Quick examples
 
 ```bash
-wpscan https://ma.tt
-wpscan https://ma.tt --silent
-wpscan https://ma.tt --rules-dir ~/path/to/custom/rules
-wpscan https://ma.tt --bulk-file ~/path/to/sources.txt
-wpscan https://ma.tt --user-agent "Netscape Gold"
-wpscan https://ma.tt --ignore-rule wp-login.js
+wpcheck https://ma.tt
+wpcheck https://ma.tt --silent
+wpcheck https://ma.tt --rules-dir ~/path/to/custom/rules
+wpcheck https://ma.tt --bulk-file ~/path/to/sources.txt
+wpcheck https://ma.tt --user-agent "Netscape Gold"
+wpcheck https://ma.tt --ignore-rule wp-login.js
 ```
 
 
 ### Default rules
 
-`wpscan` has a few rules that are enabled by default. Follow also our [WordPress security best practices](HOWTO.md) to fix vulnerabilities detected by `wpscan` default rules.
+`wpcheck` has a few rules that are enabled by default. Follow also our [WordPress security best practices](HOWTO.md) to fix vulnerabilities detected by `wpcheck` default rules.
 
 ##### 1. Checks sensitive WordPress/Apache/Dot files for their availability
   - `/wp-config.php`
@@ -98,10 +104,10 @@ wpscan https://ma.tt --ignore-rule wp-login.js
 
 ### Custom rules
 
-The power of `wpscan` is the flexibility: You can expand the tool functionality by building their own rules, scans and checks. The option `--rules-dir` allows loading of user-defined rules from a custom directory.
+The power of `wpcheck` is the flexibility: You can expand the tool functionality by building their own rules, scans and checks. The option `--rules-dir` allows loading of user-defined rules from a custom directory.
 
 - The directory path
-  - can be absolute or relative to the `wpscan` folder
+  - can be absolute or relative to the `wpcheck` folder
 - The custom rules
   - must be stored as `.js` files
   - can be a `Node.js` script
@@ -115,21 +121,21 @@ exports.fire = ( data ) => {
 }
 ```
 
-`wpscan` will run (technically `require`) every custom rule file. The file naming does not matter, short and unique names are welcome. Feel free to create your own rules, enjoy!
+`wpcheck` will run (technically `require`) every custom rule file. The file naming does not matter, short and unique names are welcome. Feel free to create your own rules, enjoy!
 
 ##### Get inspired
 - [example custom rules](example/rules)
-- [wpscan default rules](lib/rules)
+- [wpcheck default rules](lib/rules)
 
 
 ### Ignore rule(s)
 
-`wpscan` can skip certain [default](lib/rules) and custom rules. The CLI option `--ignore-rule` takes a rule name, the rule name is the JavaScript file name of the rule without path. Multiple rule filtering is possible by a multiple use of the CLI option.
+`wpcheck` can skip certain [default](lib/rules) and custom rules. The CLI option `--ignore-rule` takes a rule name, the rule name is the JavaScript file name of the rule without path. Multiple rule filtering is possible by a multiple use of the CLI option.
 
 ```bash
-wpscan ma.tt --ignore-rule wp-login.js
-wpscan ma.tt --ignore-rule wp-login.js --ignore-rule sensitive-files.js
-wpscan ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js
+wpcheck ma.tt --ignore-rule wp-login.js
+wpcheck ma.tt --ignore-rule wp-login.js --ignore-rule sensitive-files.js
+wpcheck ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js
 ```
 
 
@@ -138,7 +144,7 @@ wpscan ma.tt --rules-dir ./example/rules --ignore-rule custom-rule.js
 Multiple WordPress site URLs can be imported from a single file. This is a simple text file with one URL per line.
 
 ```bash
-wpscan -b ~/path/to/sources.txt
+wpcheck -b ~/path/to/sources.txt
 ```
 
 

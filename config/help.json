@@ -2,9 +2,9 @@
     "format": "\nName\n\t%s\n\nUsage\n\t%s\n\nOptions\n\t%s\n",
     "name": [
         "Vulnerability scanner for WordPress",
-        "https://github.com/sergejmueller/wpscan"
+        "https://github.com/sergejmueller/wpcheck"
     ],
-    "usage": "wpscan <url> [url] [options]",
+    "usage": "wpcheck <url> [url] [options]",
     "options": [
         "-s, --silent       Disable success and info messages",
         "-r, --rules-dir    Load and execute additional rules from any directory",
