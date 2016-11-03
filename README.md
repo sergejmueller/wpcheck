@@ -59,6 +59,7 @@ Option | Shortcut | Description
 ------ | -------- | -----------
 `--help` | `-h` | Outputs supplied help text.
 `--silent` | `-s` | Disables success and info messages. Displays warnings only.
+`--version` | `-v` | Prints `wpcheck` version.
 `--rules-dir` | `-r` | Loads additional rules from a directory (see [Custom rules](#custom-rules)).
 `--bulk-file` | `-b` | Reads additional WordPress site URLs from a text file (see [Bulk scan](#bulk-scan)).
 `--ignore-rule` | `-i` | Skips loading and execution of a specific rule (see [Ignore rules](#ignore-rules)).

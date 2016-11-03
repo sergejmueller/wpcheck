@@ -354,7 +354,27 @@ describe( 'wpcheck CLI', () => {
             data.must.include( '-b, --bulk-file    Read and scan additional URLs from a text file' )
             data.must.include( '-u, --user-agent   Define a custom User-Agent string' )
             data.must.include( '-i, --ignore-rule  Skip loading and execution of a specific rule' )
+            data.must.include( '-v, --version      Print wpcheck version' )
             data.must.include( '-h, --help         Show this help' )
+
+            done()
+
+        } )
+
+    } )
+
+
+    /**
+     * wpcheck version
+     */
+
+    it( `17. wpcheck --version`, ( done ) => {
+
+        exec( `wpcheck --version` ).then( result => {
+
+            const data = result.stdout.trim()
+
+            data.must.equal( require( '../package.json' ).version )
 
             done()
 

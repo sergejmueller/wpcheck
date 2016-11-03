@@ -2,6 +2,7 @@
     "alias": {
         "h": "help",
         "s": "silent",
+        "v": "version",
         "r": "rules-dir",
         "b": "bulk-file",
         "u": "user-agent",
@@ -10,6 +11,7 @@
     "default": {
         "help": false,
         "silent": false,
+        "version": false,
         "rules-dir": null,
         "bulk-file": null,
         "user-agent": "wpcheck",
@@ -23,6 +25,7 @@
     ],
     "boolean": [
         "help",
-        "silent"
+        "silent",
+        "version"
     ]
 }
