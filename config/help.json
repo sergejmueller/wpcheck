@@ -11,6 +11,7 @@
         "-b, --bulk-file    Read and scan additional URLs from a text file",
         "-u, --user-agent   Define a custom User-Agent string",
         "-i, --ignore-rule  Skip loading and execution of a specific rule",
+        "-v, --version      Print wpcheck version",
         "-h, --help         Show this help"
     ]
 }

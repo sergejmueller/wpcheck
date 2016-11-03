@@ -1,6 +1,13 @@
 # wpcheck / CHANGELOG
 
 
+### 1.1.0 (2016-11-03)
+
+##### New
+
+* `wpcheck [-v | --version]` to print `wpcheck` version
+
+
 ### 1.0.0 (2016-11-02)
 
 ##### New
