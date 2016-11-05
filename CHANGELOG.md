@@ -1,6 +1,14 @@
 # wpcheck / CHANGELOG
 
 
+### 1.1.1 (2016-11-05)
+
+##### Changes
+* `.travis.yml`: Add `npm link` as `before_script`
+* `package.json`: Update `request` to `v2.78.0`
+* `package.json`: Remove `npm outdated` from `npm test`
+
+
 ### 1.1.0 (2016-11-03)
 
 ##### New
