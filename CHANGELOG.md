@@ -1,6 +1,12 @@
 # wpcheck / CHANGELOG
 
 
+### 1.1.4 (2018-02-19)
+
+##### Changes
+* Update outdated packages
+
+
 ### 1.1.3 (2017-06-29)
 
 ##### Changes
