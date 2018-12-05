@@ -1,6 +1,13 @@
 # wpcheck / CHANGELOG
 
 
+### 1.2.0 (2018-12-05)
+
+##### Changes
+* Update outdated packages
+* Update Node to v8.10.0
+
+
 ### 1.1.4 (2018-02-19)
 
 ##### Changes
