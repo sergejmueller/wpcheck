@@ -31,7 +31,7 @@
     "minimist": "^1.2.0",
     "pad-end": "^1.0.2",
     "prepend-http": "^2.0.0",
-    "request": "^2.83.0",
+    "request": "^2.84.0",
     "rtrim": "^1.0.0",
     "semver": "^5.5.0",
     "valid-url": "^1.0.9"
