@@ -38,7 +38,7 @@ yarn global add wpcheck
 ```
 
 ##### Notes
-* `wpcheck` requires `Node.js >= 6` and [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
+* `wpcheck` requires `Node.js >= 8.10` and [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
 * [Fix](https://docs.npmjs.com/getting-started/fixing-npm-permissions) `npm` permissions if you get the `Permission denied` error.
 
 
